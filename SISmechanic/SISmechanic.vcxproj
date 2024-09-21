@@ -135,11 +135,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cliente.cpp" />
     <ClCompile Include="ConexionBD.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mecanico.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cliente.h" />
     <ClInclude Include="ConexionBD.h" />
     <ClInclude Include="Mecanico.h" />
   </ItemGroup>

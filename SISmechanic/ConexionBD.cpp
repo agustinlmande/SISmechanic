@@ -50,7 +50,7 @@ MYSQL* ConexionBD::getConector() {
 void ConexionBD::cerrar_conexion() {
     if (conector) {
         mysql_close(conector);
-        conector = nullptr;  // Asegúrate de no intentar usar el puntero después de cerrarlo.
+        conector = nullptr;  // Asegurarse de no usar el puntero después de cerrarlo.
         cout << "Conexion cerrada correctamente." << endl;
     }
 }
@@ -67,4 +67,34 @@ void ConexionBD::ejecutarConsulta(const string& consulta) {
     else {
         cout << "Consulta ejecutada con exito." << endl;
     }
+}
+
+// Nuevo método para obtener resultados de una consulta SELECT
+vector<vector<string>> ConexionBD::obtenerResultados(const string& consulta) {
+    vector<vector<string>> resultados;
+
+    if (mysql_query(conector, consulta.c_str())) {
+        cerr << "Error al ejecutar la consulta: " << mysql_error(conector) << endl;
+        return resultados;
+    }
+
+    MYSQL_RES* resultado = mysql_store_result(conector);
+    if (!resultado) {
+        cerr << "Error al obtener el resultado: " << mysql_error(conector) << endl;
+        return resultados;
+    }
+
+    int num_campos = mysql_num_fields(resultado);
+    MYSQL_ROW fila;
+
+    while ((fila = mysql_fetch_row(resultado))) {
+        vector<string> filaDatos;
+        for (int i = 0; i < num_campos; ++i) {
+            filaDatos.push_back(fila[i] ? fila[i] : "NULL");
+        }
+        resultados.push_back(filaDatos);
+    }
+
+    mysql_free_result(resultado);
+    return resultados;
 }

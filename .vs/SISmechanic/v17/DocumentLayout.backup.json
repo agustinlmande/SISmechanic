@@ -7,20 +7,16 @@
       "RelativeMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|solutionrelative:SISmechanic\\Mecanico.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Cliente.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|solutionrelative:SISmechanic\\Cliente.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Mecanico.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|solutionrelative:SISmechanic\\Mecanico.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|solutionrelative:SISmechanic\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\ConexionBD.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|solutionrelative:SISmechanic\\ConexionBD.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\ConexionBD.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|solutionrelative:SISmechanic\\ConexionBD.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Cliente.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|solutionrelative:SISmechanic\\Cliente.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -40,61 +36,48 @@
               "RelativeDocumentMoniker": "SISmechanic\\Mecanico.cpp",
               "ToolTip": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Mecanico.cpp",
               "RelativeToolTip": "SISmechanic\\Mecanico.cpp",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAuwGwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADQAAAAAAAAAAAAewEIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-20T11:03:41.534Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Mecanico.h",
-              "DocumentMoniker": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Mecanico.h",
-              "RelativeDocumentMoniker": "SISmechanic\\Mecanico.h",
-              "ToolTip": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Mecanico.h",
-              "RelativeToolTip": "SISmechanic\\Mecanico.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-09-20T10:33:46.303Z",
+              "WhenOpened": "2024-09-21T17:05:47.663Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ConexionBD.cpp",
-              "DocumentMoniker": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\ConexionBD.cpp",
-              "RelativeDocumentMoniker": "SISmechanic\\ConexionBD.cpp",
-              "ToolTip": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\ConexionBD.cpp",
-              "RelativeToolTip": "SISmechanic\\ConexionBD.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-18T23:29:09.055Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ConexionBD.h",
-              "DocumentMoniker": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\ConexionBD.h",
-              "RelativeDocumentMoniker": "SISmechanic\\ConexionBD.h",
-              "ToolTip": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\ConexionBD.h",
-              "RelativeToolTip": "SISmechanic\\ConexionBD.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Title": "Cliente.h",
+              "DocumentMoniker": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Cliente.h",
+              "RelativeDocumentMoniker": "SISmechanic\\Cliente.h",
+              "ToolTip": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Cliente.h",
+              "RelativeToolTip": "SISmechanic\\Cliente.h",
+              "ViewState": "AgIAABgAAAAAAAAAAAAuwCgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-09-18T23:26:29.565Z",
+              "WhenOpened": "2024-09-21T17:01:56.02Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\main.cpp",
-              "RelativeDocumentMoniker": "SISmechanic\\main.cpp",
-              "ToolTip": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\main.cpp",
-              "RelativeToolTip": "SISmechanic\\main.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Title": "Mecanico.h",
+              "DocumentMoniker": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Mecanico.h",
+              "RelativeDocumentMoniker": "SISmechanic\\Mecanico.h",
+              "ToolTip": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Mecanico.h",
+              "RelativeToolTip": "SISmechanic\\Mecanico.h",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAABsAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-09-21T16:59:38.256Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Cliente.cpp",
+              "DocumentMoniker": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Cliente.cpp",
+              "RelativeDocumentMoniker": "SISmechanic\\Cliente.cpp",
+              "ToolTip": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Cliente.cpp",
+              "RelativeToolTip": "SISmechanic\\Cliente.cpp",
+              "ViewState": "AgIAADoAAAAAAAAAAAAAAEgAAAB6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-18T23:10:37.66Z",
+              "WhenOpened": "2024-09-20T16:12:18.958Z",
               "EditorCaption": ""
             }
           ]
