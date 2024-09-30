@@ -19,7 +19,8 @@ public:
     void crearBaseDeDatos(const std::string& nombreBD); // Declarada solo una vez
     void crearTablas();
     void cerrar_conexion();
-    void ejecutarConsulta(const std::string& consulta);
+    void precargarDatos();  // Agregar la declaración de precargarDatos
+    void ejecutarConsulta(const std::string& consulta);  // Declarar ejecutarConsulta
     std::vector<std::vector<std::string>> obtenerResultados(const std::string& consulta); // Declarada solo una vez
     MYSQL* getConector();
 };
