@@ -1,23 +1,30 @@
-#pragma once
-#include <mysql.h>
-#include <string>
-#include <vector>
+#ifndef CONEXIONBD_H
+#define CONEXIONBD_H
 
-using namespace std;
+#include <mysql.h>
+#include <iostream>
+#include <vector>
+#include <string>
 
 class ConexionBD {
 private:
     MYSQL* conector;
-    void crearBaseDeDatos(const string& nombreBD);
 
 public:
     ConexionBD();
     ~ConexionBD();
-    void abrir_conexion();
-    MYSQL* getConector();
-    void cerrar_conexion();
-    void ejecutarConsulta(const string& consulta);
 
-    // Nuevo método para obtener los resultados de una consulta SELECT
-    vector<vector<string>> obtenerResultados(const string& consulta);
+    // Declaración de las funciones
+    void abrir_conexion();
+    void crearBaseDeDatos(const std::string& nombreBD); // Declarada solo una vez
+    void crearTablas();
+    void cerrar_conexion();
+    void ejecutarConsulta(const std::string& consulta);
+    std::vector<std::vector<std::string>> obtenerResultados(const std::string& consulta); // Declarada solo una vez
+    MYSQL* getConector();
 };
+
+#endif // CONEXIONBD_H
+
+
+

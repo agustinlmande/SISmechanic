@@ -1,1 +1,2 @@
 C:\Users\Agus\source\repos\SISmechanic\SISmechanic\x64\Release\SISmechanic.exe
+C:\Users\Ricky\source\repos\SISmechanic\SISmechanic\x64\Release\SISmechanic.exe
