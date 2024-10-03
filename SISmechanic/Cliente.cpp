@@ -75,6 +75,6 @@ void Cliente::actualizarCliente() {
 }
 
 void Cliente::eliminarCliente() {
-    string consulta = "DELETE FROM cliente WHERE id_Cliente=" + to_string(idCliente);
+    string consulta = "DELETE FROM cliente WHERE idCliente=" + to_string(idCliente);
     conexion->ejecutarConsulta(consulta);
 }

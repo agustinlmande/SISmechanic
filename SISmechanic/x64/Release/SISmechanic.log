@@ -1,10 +1,9 @@
 ﻿  Cliente.cpp
-  ConexionBD.cpp
   main.cpp
-  Mecanico.cpp
+  menu.cpp
   Generando código
-  3 of 103 functions ( 2.9%) were compiled, the rest were copied from previous compilation.
+  20 of 205 functions ( 9.8%) were compiled, the rest were copied from previous compilation.
     1 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    2 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
-  SISmechanic.vcxproj -> C:\Users\Ricky\Source\Repos\SISmechanic\x64\Release\SISmechanic.exe
+  SISmechanic.vcxproj -> C:\Users\Agus\source\repos\SISmechanic\x64\Release\SISmechanic.exe
