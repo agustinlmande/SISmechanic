@@ -52,12 +52,11 @@ void ConexionBD::crearTablas() {
     ejecutarConsulta(R"(
         CREATE TABLE IF NOT EXISTS Mecanico (
             idMecanico INT AUTO_INCREMENT PRIMARY KEY,
-            nombre VARCHAR(50) NOT NULL,
-            direccion VARCHAR(100),
-            telefono VARCHAR(20),
-            email VARCHAR(50),
-            fechaIngreso DATE,
-            sueldo DECIMAL(10, 2)
+            DniMecanico VARCHAR(50) NOT NULL,
+            NombreMecanico VARCHAR(50) NOT NULL,
+            ApellidoMecanico VARCHAR(50) NOT NULL,
+            TelMecanico VARCHAR(20),
+            EmailMecanico VARCHAR(50)
         ) ENGINE = InnoDB;
     )");
 
@@ -65,11 +64,12 @@ void ConexionBD::crearTablas() {
     ejecutarConsulta(R"(
         CREATE TABLE IF NOT EXISTS Cliente (
             IdCliente INT AUTO_INCREMENT PRIMARY KEY,
-            nombre VARCHAR(50) NOT NULL,
-            direccion VARCHAR(100),
-            telefono VARCHAR(20),
-            email VARCHAR(50),
-            fechaRegistro DATE
+            dniCliente varchar(30) NOT NULL,
+            nombreCliente VARCHAR(50) NOT NULL,
+            apellidoCliente varchar(50) NOT NULL,
+            telCliente VARCHAR(20),
+            emailCliente VARCHAR(50)
+            
         ) ENGINE = InnoDB;
     )");
 
@@ -135,16 +135,16 @@ void ConexionBD::precargarDatos() {
 
     // Precargar datos en la tabla Mecanico
     ejecutarConsulta(R"(
-        INSERT INTO Mecanico (nombre, direccion, telefono, email, fechaIngreso, sueldo) VALUES
-        ('Juan Perez', 'Calle 123', '123456789', 'juan.perez@example.com', '2022-01-15', 35000.50),
-        ('Maria Lopez', 'Avenida Siempre Viva', '987654321', 'maria.lopez@example.com', '2023-03-20', 45000.75);
+       INSERT INTO Cliente (dniCliente, nombreCliente, apellidoCliente, telCliente, emailCliente) VALUES
+      ('45678912', 'Lucia', 'Fernandez', '1122334455', 'lucia.fernandez@example.com'),
+      ('78912345', 'Miguel', 'Ramirez', '5566778899', 'miguel.ramirez@example.com');
     )");
 
-    // Precargar datos en la tabla Cliente
+    // Precargar datos en la tabla Mecanico
     ejecutarConsulta(R"(
-        INSERT INTO Cliente (nombre, direccion, telefono, email, fechaRegistro) VALUES
-        ('Carlos Sanchez', 'Calle Falsa 456', '111222333', 'carlos.sanchez@example.com', '2023-05-10'),
-        ('Ana Martinez', 'Calle Libertad 789', '444555666', 'ana.martinez@example.com', '2023-06-22');
+        INSERT INTO Mecanico (DniMecanico, NombreMecanico, ApellidoMecanico, TelMecanico, EmailMecanico) VALUES
+      ('12345678', 'Pedro', 'Gonzalez', '111222333', 'pedro.gonzalez@example.com'),
+      ('87654321', 'Laura', 'Martinez', '444555666', 'laura.martinez@example.com');
     )");
 
     // Precargar datos en la tabla Vehiculo
