@@ -16,6 +16,7 @@ private:
     // Métodos privados para las operaciones CRUD de Cliente y Mecanico
     void menuClientes();
     void menuMecanicos();
+    void menuVehiculos();
 
     void crearCliente();
     void verClientes();
@@ -26,6 +27,11 @@ private:
     void verMecanicos();
     
     void eliminarMecanico();
+
+    void crearVehiculo();
+    void verVehiculos();
+    void actualizarVehiculo();
+    void eliminarVehiculo();
 
     // Utilidad para capturar una opción válida
     //int capturarOpcion(int min, int max);

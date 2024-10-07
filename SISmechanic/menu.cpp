@@ -2,6 +2,7 @@
 #include <iostream>
 #include <limits>
 #include "Utilidades.h"
+#include "Vehiculo.h"
 
 using namespace std;
 
@@ -22,9 +23,10 @@ void Menu::mostrarMenuPrincipal() {
         cout << "============================" << endl;
         cout << "1. Gestionar Clientes" << endl;
         cout << "2. Gestionar Mecanicos" << endl;
-        cout << "3. Salir" << endl;
+        cout << "3. Gestionar Vehiculos" << endl;
+        cout << "4. Salir" << endl;
         cout << "============================" << endl;
-        opcion = capturarOpcion(1, 3);
+        opcion = capturarOpcion(1, 4);
 
         switch (opcion) {
         case 1:
@@ -34,10 +36,13 @@ void Menu::mostrarMenuPrincipal() {
             menuMecanicos();
             break;
         case 3:
+            menuVehiculos();
+            break;
+        case 4:
             cout << "Saliendo del programa..." << endl;
             break;
         }
-    } while (opcion != 3);
+    } while (opcion != 4);
 }
 
 void Menu::menuClientes() {
@@ -99,6 +104,40 @@ void Menu::menuMecanicos() {
             eliminarMecanico();
             break;
         case 4:
+            return;
+        }
+    } while (opcion != 4);
+}
+
+void Menu::menuVehiculos() {
+    int opcion;
+    do {
+        limpiarPantalla();
+        cout << "==========================" << endl;
+        cout << "    GESTION DE VEHICULOS  " << endl;
+        cout << "==========================" << endl;
+        cout << "1. Crear vehiculo" << endl;
+        cout << "2. Ver vehiculos" << endl;
+        cout << "3. Eliminar vehiculo" << endl;
+        cout << "3. Actualizar vehiculo" << endl;
+        cout << "4. Volver al menu principal" << endl;
+        cout << "==========================" << endl;
+        opcion = capturarOpcion(1, 5);
+
+        switch (opcion) {
+        case 1:
+            crearVehiculo();
+            break;
+        case 2:
+            verVehiculos();
+            break;
+        case 3:
+            actualizarVehiculo();
+            break;
+        case 4:
+            eliminarVehiculo();
+            break;
+        case 5:
             return;
         }
     } while (opcion != 4);
@@ -198,6 +237,62 @@ void Menu::eliminarMecanico() {
     mecanico.setIdMecanico(id);
     mecanico.eliminarMecanico();
     cout << "Mecanico eliminado exitosamente!" << endl;
+
+    pausa();
+    limpiarPantalla();
+}
+
+void Menu::crearVehiculo() {
+    limpiarPantalla();
+    string marca, modelo;
+    int anio, idCliente;
+
+    cout << "Ingrese la marca del vehículo: ";
+    cin >> marca;
+    cout << "Ingrese el modelo del vehículo: ";
+    cin >> modelo;
+    cout << "Ingrese año del vehículo: ";
+    cin >> anio;
+    idCliente = capturarId("Ingrese el ID del cliente asociado: ");
+
+    Vehiculo vehiculo(conexion, 0, marca, modelo, anio, idCliente); 
+    vehiculo.crearVehiculo();
+    cout << "Vehículo creado exitosamente!" << endl;
+
+    pausa();
+    limpiarPantalla();
+}
+
+void Menu::verVehiculos() {
+    limpiarPantalla();
+    Vehiculo vehiculo(conexion);
+    vehiculo.leerVehiculo(); 
+
+    pausa();
+    limpiarPantalla();
+}
+
+void Menu::actualizarVehiculo() {
+    limpiarPantalla();
+    int id = capturarId("Ingrese el ID del vehiculo que desea actualizar: ");
+
+    Vehiculo vehiculo(conexion);
+    vehiculo.setIdVehiculo(id);
+    vehiculo.actualizarVehiculo();
+    cout << "Vehiculo actualizado exitosamente!" << endl;
+
+    pausa();
+    limpiarPantalla();
+}
+
+void Menu::eliminarVehiculo() {
+    limpiarPantalla();
+    int id = capturarId("Ingrese el ID del vehículo que desea eliminar: ");
+
+    Vehiculo vehiculo(conexion);
+    vehiculo.setIdVehiculo(id);
+    vehiculo.eliminarVehiculo();
+    cout << "Vehículo eliminado exitosamente!" << endl;
 
     pausa();
     limpiarPantalla();
