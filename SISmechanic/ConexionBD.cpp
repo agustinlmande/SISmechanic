@@ -11,26 +11,30 @@ ConexionBD::~ConexionBD() {
 void ConexionBD::abrir_conexion() {
     conector = mysql_init(nullptr);
     if (!conector) {
-        cerr << "Error al inicializar MySQL: No se pudo asignar memoria para la conexion." << endl;
+        cerr << "Error al inicializar MySQL: No se pudo asignar memoria para la conexión." << endl;
         return;
     }
 
-    conector = mysql_real_connect(conector, "localhost", "root", "", "", 3306, nullptr, 0);
+    // Ajustar el puerto según corresponda, cambiando 3306 si usas otro puerto
+    conector = mysql_real_connect(conector, "localhost", "root", "", "", 3307, nullptr, 0);
     if (!conector) {
         cerr << "Error al conectar a MySQL: " << mysql_error(conector) << endl;
         return;
     }
 
     // Crear la base de datos si no existe
-    crearBaseDeDatos("mecanico");
+    crearBaseDeDatos("TallerMecanico");
 
     // Seleccionar la base de datos
-    if (mysql_select_db(conector, "mecanico")) {
+    if (mysql_select_db(conector, "TallerMecanico")) {
         cerr << "Error al seleccionar la base de datos: " << mysql_error(conector) << endl;
     }
     else {
         cout << "Base de datos seleccionada correctamente." << endl;
     }
+
+    // Crear las tablas
+    crearTablas();
 }
 
 void ConexionBD::crearBaseDeDatos(const string& nombreBD) {
@@ -43,6 +47,121 @@ void ConexionBD::crearBaseDeDatos(const string& nombreBD) {
     }
 }
 
+void ConexionBD::crearTablas() {
+    // Crear la tabla Mecanico
+    ejecutarConsulta(R"(
+        CREATE TABLE IF NOT EXISTS Mecanico (
+            idMecanico INT AUTO_INCREMENT PRIMARY KEY,
+            DniMecanico VARCHAR(50) NOT NULL,
+            NombreMecanico VARCHAR(50) NOT NULL,
+            ApellidoMecanico VARCHAR(50) NOT NULL,
+            TelMecanico VARCHAR(20),
+            EmailMecanico VARCHAR(50)
+        ) ENGINE = InnoDB;
+    )");
+
+    // Crear la tabla Cliente
+    ejecutarConsulta(R"(
+        CREATE TABLE IF NOT EXISTS Cliente (
+            IdCliente INT AUTO_INCREMENT PRIMARY KEY,
+            dniCliente varchar(30) NOT NULL,
+            nombreCliente VARCHAR(50) NOT NULL,
+            apellidoCliente varchar(50) NOT NULL,
+            telCliente VARCHAR(20),
+            emailCliente VARCHAR(50)
+            
+        ) ENGINE = InnoDB;
+    )");
+
+    // Crear la tabla Vehiculo
+    ejecutarConsulta(R"(
+        CREATE TABLE IF NOT EXISTS Vehiculo (
+            idVehiculo INT AUTO_INCREMENT PRIMARY KEY,
+            marca VARCHAR(50) NOT NULL,
+            modelo VARCHAR(50) NOT NULL,
+            anio INT,
+            idCliente INT,
+            FOREIGN KEY (idCliente) REFERENCES Cliente(IdCliente) ON DELETE CASCADE ON UPDATE CASCADE
+        ) ENGINE = InnoDB;
+    )");
+
+    // Crear la tabla Estado
+    ejecutarConsulta(R"(
+        CREATE TABLE IF NOT EXISTS Estado (
+            idEstado INT AUTO_INCREMENT PRIMARY KEY,
+            descripcion VARCHAR(50) NOT NULL
+        ) ENGINE = InnoDB;
+    )");
+
+    // Crear la tabla Service
+    ejecutarConsulta(R"(
+        CREATE TABLE IF NOT EXISTS Service (
+            idService INT AUTO_INCREMENT PRIMARY KEY,
+            descripcion VARCHAR(100) NOT NULL,
+            fecha DATE,
+            costo DECIMAL(10, 2),
+            idMecanico INT,
+            idVehiculo INT,
+            idEstado INT,
+            FOREIGN KEY (idMecanico) REFERENCES Mecanico(idMecanico) ON DELETE SET NULL ON UPDATE CASCADE,
+            FOREIGN KEY (idVehiculo) REFERENCES Vehiculo(idVehiculo) ON DELETE CASCADE ON UPDATE CASCADE,
+            FOREIGN KEY (idEstado) REFERENCES Estado(idEstado) ON DELETE CASCADE ON UPDATE CASCADE
+        ) ENGINE = InnoDB;
+    )");
+
+    // Crear la tabla Vehiculo_has_Service (relación muchos a muchos)
+    ejecutarConsulta(R"(
+        CREATE TABLE IF NOT EXISTS Vehiculo_has_Service (
+            Vehiculo_idVehiculo INT NOT NULL,
+            Service_idService INT NOT NULL,
+            PRIMARY KEY (Vehiculo_idVehiculo, Service_idService),
+            FOREIGN KEY (Vehiculo_idVehiculo) REFERENCES Vehiculo(idVehiculo) ON DELETE CASCADE ON UPDATE CASCADE,
+            FOREIGN KEY (Service_idService) REFERENCES Service(idService) ON DELETE CASCADE ON UPDATE CASCADE
+        ) ENGINE = InnoDB;
+    )");
+
+    // Precargar datos después de crear las tablas
+    precargarDatos();
+}
+
+void ConexionBD::precargarDatos() {
+    // Precargar datos en la tabla Estado
+    ejecutarConsulta(R"(
+        INSERT INTO Estado (descripcion) VALUES
+        ('Pendiente'),
+        ('En Proceso'),
+        ('Finalizado');
+    )");
+
+    // Precargar datos en la tabla Mecanico
+    ejecutarConsulta(R"(
+       INSERT INTO Cliente (dniCliente, nombreCliente, apellidoCliente, telCliente, emailCliente) VALUES
+      ('45678912', 'Lucia', 'Fernandez', '1122334455', 'lucia.fernandez@example.com'),
+      ('78912345', 'Miguel', 'Ramirez', '5566778899', 'miguel.ramirez@example.com');
+    )");
+
+    // Precargar datos en la tabla Mecanico
+    ejecutarConsulta(R"(
+        INSERT INTO Mecanico (DniMecanico, NombreMecanico, ApellidoMecanico, TelMecanico, EmailMecanico) VALUES
+      ('12345678', 'Pedro', 'Gonzalez', '111222333', 'pedro.gonzalez@example.com'),
+      ('87654321', 'Laura', 'Martinez', '444555666', 'laura.martinez@example.com');
+    )");
+
+    // Precargar datos en la tabla Vehiculo
+    ejecutarConsulta(R"(
+        INSERT INTO Vehiculo (marca, modelo, anio, idCliente) VALUES
+        ('Toyota', 'Corolla', 2018, 1),
+        ('Ford', 'Fiesta', 2020, 2);
+    )");
+
+    // Precargar datos en la tabla Service
+    ejecutarConsulta(R"(
+        INSERT INTO Service (descripcion, fecha, costo, idMecanico, idVehiculo, idEstado) VALUES
+        ('Cambio de aceite', '2023-07-15', 1500.00, 1, 1, 1),
+        ('Revisión general', '2023-08-05', 3000.00, 2, 2, 2);
+    )");
+}
+
 MYSQL* ConexionBD::getConector() {
     return conector;
 }
@@ -51,13 +170,13 @@ void ConexionBD::cerrar_conexion() {
     if (conector) {
         mysql_close(conector);
         conector = nullptr;  // Asegurarse de no usar el puntero después de cerrarlo.
-        cout << "Conexion cerrada correctamente." << endl;
+        cout << "Conexión cerrada correctamente." << endl;
     }
 }
 
 void ConexionBD::ejecutarConsulta(const string& consulta) {
     if (!conector) {
-        cerr << "Error: Conexion no establecida." << endl;
+        cerr << "Error: Conexión no establecida." << endl;
         return;
     }
 
@@ -65,11 +184,10 @@ void ConexionBD::ejecutarConsulta(const string& consulta) {
         cerr << "Error al ejecutar la consulta: " << mysql_error(conector) << endl;
     }
     else {
-        cout << "Consulta ejecutada con exito." << endl;
+        cout << "Consulta ejecutada con Exito." << endl;
     }
 }
 
-// Nuevo método para obtener resultados de una consulta SELECT
 vector<vector<string>> ConexionBD::obtenerResultados(const string& consulta) {
     vector<vector<string>> resultados;
 
@@ -98,3 +216,4 @@ vector<vector<string>> ConexionBD::obtenerResultados(const string& consulta) {
     mysql_free_result(resultado);
     return resultados;
 }
+
