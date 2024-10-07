@@ -1,6 +1,8 @@
 #include "menu.h"
 #include <iostream>
 #include <limits>
+#include "Utilidades.h"
+
 using namespace std;
 
 Menu::Menu(ConexionBD* conexion) : conexion(conexion) {}
@@ -8,15 +10,21 @@ Menu::Menu(ConexionBD* conexion) : conexion(conexion) {}
 void Menu::mostrarMenuPrincipal() {
     int opcion;
     do {
-        cout << "==========================" << endl;
+        limpiarPantalla();
+        cout << "============================" << endl;
+        cout << "  #####################" << endl;
+        cout << "  #   SISmechanic     #" << endl;
+        cout << "  #####################" << endl;
+        cout << "============================" << endl;
+        cout << "Sistema de Gestion de Taller" << endl;
+        cout << "============================" << endl;
         cout << "       MENU PRINCIPAL     " << endl;
-        cout << "==========================" << endl;
+        cout << "============================" << endl;
         cout << "1. Gestionar Clientes" << endl;
         cout << "2. Gestionar Mecanicos" << endl;
         cout << "3. Salir" << endl;
-        cout << "==========================" << endl;
-        cout << "Elija una opcion: ";
-        cin >> opcion; // = capturarOpcion(1, 3);
+        cout << "============================" << endl;
+        opcion = capturarOpcion(1, 3);
 
         switch (opcion) {
         case 1:
@@ -35,17 +43,17 @@ void Menu::mostrarMenuPrincipal() {
 void Menu::menuClientes() {
     int opcion;
     do {
+        limpiarPantalla();
         cout << "==========================" << endl;
         cout << "     GESTION DE CLIENTES  " << endl;
         cout << "==========================" << endl;
         cout << "1. Crear Cliente" << endl;
         cout << "2. Ver Clientes" << endl;
-        cout << "3. Actualizar Cliente" << endl; // Nueva opción para actualizar
+        cout << "3. Actualizar Cliente" << endl;
         cout << "4. Eliminar Cliente" << endl;
-        cout << "5. Volver al menu principal" << endl; // Cambia el número de opción
+        cout << "5. Volver al menu principal" << endl;
         cout << "==========================" << endl;
-        cout << "Elija una opcion: ";
-        cin >> opcion;
+        opcion = capturarOpcion(1, 5);
 
         switch (opcion) {
         case 1:
@@ -55,20 +63,21 @@ void Menu::menuClientes() {
             verClientes();
             break;
         case 3:
-            actualizarCliente(); // Llamar al nuevo método
+            actualizarCliente();
             break;
         case 4:
             eliminarCliente();
             break;
-        case 5: // Cambia el número de opción
+        case 5:
             return;
         }
-    } while (opcion != 5); // Cambia el número de opción
+    } while (opcion != 5);
 }
 
 void Menu::menuMecanicos() {
     int opcion;
     do {
+        limpiarPantalla();
         cout << "==========================" << endl;
         cout << "    GESTION DE MECANICOS  " << endl;
         cout << "==========================" << endl;
@@ -77,8 +86,7 @@ void Menu::menuMecanicos() {
         cout << "3. Eliminar Mecanico" << endl;
         cout << "4. Volver al menu principal" << endl;
         cout << "==========================" << endl;
-        cout << "Elija una opcion: ";
-        cin >> opcion;// = capturarOpcion(1, 4);
+        opcion = capturarOpcion(1, 4);
 
         switch (opcion) {
         case 1:
@@ -97,81 +105,100 @@ void Menu::menuMecanicos() {
 }
 
 void Menu::crearCliente() {
+    limpiarPantalla();
     string dni, nombre, apellido, tel, email;
-    cout << "Ingrese el DNI del cliente: ";
-    cin >> dni;
+
+    dni = capturarStringNumerico("Ingrese el DNI del cliente: ");
     cout << "Ingrese el nombre del cliente: ";
     cin >> nombre;
     cout << "Ingrese el apellido del cliente: ";
     cin >> apellido;
-    cout << "Ingrese el telefono del cliente: ";
-    cin >> tel;
+    tel = capturarStringNumerico("Ingrese el telefono del cliente: ");
     cout << "Ingrese el email del cliente: ";
     cin >> email;
 
     Cliente cliente(conexion, 0, dni, nombre, apellido, tel, email);
     cliente.crearCliente();
     cout << "Cliente creado exitosamente!" << endl;
+
+    pausa();
+    limpiarPantalla();
 }
 
 void Menu::verClientes() {
+    limpiarPantalla();
     Cliente cliente(conexion);
     cliente.leerClientes();
+
+    pausa();
+    limpiarPantalla();
 }
 
 void Menu::actualizarCliente() {
-    int id;
-    cout << "Ingrese el ID del cliente que desea actualizar: ";
-    cin >> id;
+    limpiarPantalla();
+    int id = capturarId("Ingrese el ID del cliente que desea actualizar: ");
 
     Cliente cliente(conexion);
-    cliente.setIdCliente(id); // Asigna el ID al objeto cliente
-    cliente.actualizarCliente(); // Llama al método de actualización en la clase Cliente
+    cliente.setIdCliente(id);
+    cliente.actualizarCliente();
+    cout << "Cliente actualizado exitosamente!" << endl;
+
+    pausa();
+    limpiarPantalla();
 }
 
 void Menu::eliminarCliente() {
-    int id;
-    cout << "Ingrese el ID del cliente que desea eliminar: ";
-    cin >> id;
+    limpiarPantalla();
+    int id = capturarId("Ingrese el ID del cliente que desea eliminar: ");
 
     Cliente cliente(conexion);
     cliente.setIdCliente(id);
     cliente.eliminarCliente();
     cout << "Cliente eliminado exitosamente!" << endl;
+
+    pausa();
+    limpiarPantalla();
 }
 
 void Menu::crearMecanico() {
+    limpiarPantalla();
     string dni, nombre, apellido, tel, email;
-    cout << "Ingrese el DNI del mecanico: ";
-    cin >> dni;
+
+    dni = capturarStringNumerico("Ingrese el DNI del mecanico: ");
     cout << "Ingrese el nombre del mecanico: ";
     cin >> nombre;
     cout << "Ingrese el apellido del mecanico: ";
     cin >> apellido;
-    cout << "Ingrese el telefono del mecanico: ";
-    cin >> tel;
+    tel = capturarStringNumerico("Ingrese el telefono del mecanico: ");
     cout << "Ingrese el email del mecanico: ";
     cin >> email;
 
     Mecanico mecanico(conexion, 0, dni, nombre, apellido, tel, email);
     mecanico.crearMecanico();
     cout << "Mecanico creado exitosamente!" << endl;
+
+    pausa();
+    limpiarPantalla();
 }
 
 void Menu::verMecanicos() {
+    limpiarPantalla();
     Mecanico mecanico(conexion);
     mecanico.leerMecanico();
+
+    pausa();
+    limpiarPantalla();
 }
 
 void Menu::eliminarMecanico() {
-    int id;
-    cout << "Ingrese el ID del mecanico que desea eliminar: ";
-    cin >> id;
+    limpiarPantalla();
+    int id = capturarId("Ingrese el ID del mecanico que desea eliminar: ");
 
     Mecanico mecanico(conexion);
     mecanico.setIdMecanico(id);
     mecanico.eliminarMecanico();
     cout << "Mecanico eliminado exitosamente!" << endl;
+
+    pausa();
+    limpiarPantalla();
 }
-
-

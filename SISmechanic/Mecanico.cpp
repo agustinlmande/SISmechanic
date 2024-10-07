@@ -59,11 +59,36 @@ void Mecanico::leerMecanico() {
 }
 
 void Mecanico::actualizarMecanico() {
-    string consulta = "UPDATE Mecanico SET DniMecanico='" + DniMecanico + "', NombreMecanico='" + NombreMecanico +
-        "', ApellidoMecanico='" + ApellidoMecanico + "', TelMecanico='" + TelMecanico + "', EmailMecanico='" +
-        EmailMecanico + "' WHERE idMecanico=" + to_string(idMecanico);
+    // Solicitar los nuevos valores para actualizar el mecánico
+    cout << "Ingrese el nuevo DNI del mecánico  " << DniMecanico << ": ";
+    cin >> DniMecanico;
+
+    cout << "Ingrese el nuevo nombre del mecánico  " << NombreMecanico << ": ";
+    cin >> NombreMecanico;
+
+    cout << "Ingrese el nuevo apellido del mecánico  " << ApellidoMecanico << ": ";
+    cin >> ApellidoMecanico;
+
+    cout << "Ingrese el nuevo teléfono del mecánico  " << TelMecanico << ": ";
+    cin >> TelMecanico;
+
+    cout << "Ingrese el nuevo email del mecánico  " << EmailMecanico << ": ";
+    cin >> EmailMecanico;
+
+    // Crear la consulta de actualización
+    string consulta = "UPDATE Mecanico SET DniMecanico='" + DniMecanico +
+        "', NombreMecanico='" + NombreMecanico +
+        "', ApellidoMecanico='" + ApellidoMecanico +
+        "', TelMecanico='" + TelMecanico +
+        "', EmailMecanico='" + EmailMecanico +
+        "' WHERE idMecanico=" + to_string(idMecanico);
+
+    // Ejecutar la consulta
     conexion->ejecutarConsulta(consulta);
+
+    cout << "Mecánico actualizado exitosamente." << endl;
 }
+
 
 void Mecanico::eliminarMecanico() {
     string consulta = "DELETE FROM cliente WHERE id_Cliente=" + to_string(idMecanico);

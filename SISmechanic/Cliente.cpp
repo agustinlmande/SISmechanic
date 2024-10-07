@@ -69,10 +69,36 @@ void Cliente::leerClientes() {
 }
 
 void Cliente::actualizarCliente() {
-    string consulta = "UPDATE cliente SET dniCliente='" + dniCliente + "', nombreCliente='" + nombreCliente + "', apellidoCliente='" + apellidoCliente +
-        "', telCliente='" + telCliente + "', emailCliente='" + emailCliente + "' WHERE idCliente=" + to_string(idCliente);
+    // Solicitar nuevos valores al usuario
+    cout << "Ingrese el nuevo DNI del cliente  " << dniCliente << ": ";
+    cin >> dniCliente;
+
+    cout << "Ingrese el nuevo nombre del cliente  " << nombreCliente << ": ";
+    cin >> nombreCliente;
+
+    cout << "Ingrese el nuevo apellido del cliente  " << apellidoCliente << ": ";
+    cin >> apellidoCliente;
+
+    cout << "Ingrese el nuevo telefono del cliente  " << telCliente << ": ";
+    cin >> telCliente;
+
+    cout << "Ingrese el nuevo email del cliente  " << emailCliente << ": ";
+    cin >> emailCliente;
+
+    // Crear la consulta de actualización
+    string consulta = "UPDATE cliente SET dniCliente='" + dniCliente +
+        "', nombreCliente='" + nombreCliente +
+        "', apellidoCliente='" + apellidoCliente +
+        "', telCliente='" + telCliente +
+        "', emailCliente='" + emailCliente +
+        "' WHERE idCliente=" + to_string(idCliente);
+
+    // Ejecutar la consulta
     conexion->ejecutarConsulta(consulta);
+
+    cout << "Cliente actualizado exitosamente." << endl;
 }
+
 
 void Cliente::eliminarCliente() {
     string consulta = "DELETE FROM cliente WHERE idCliente=" + to_string(idCliente);

@@ -16,7 +16,7 @@ void ConexionBD::abrir_conexion() {
     }
 
     // Ajustar el puerto según corresponda, cambiando 3306 si usas otro puerto
-    conector = mysql_real_connect(conector, "localhost", "root", "", "", 3306, nullptr, 0);
+    conector = mysql_real_connect(conector, "localhost", "root", "", "", 3307, nullptr, 0);
     if (!conector) {
         cerr << "Error al conectar a MySQL: " << mysql_error(conector) << endl;
         return;
