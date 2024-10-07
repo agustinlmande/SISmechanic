@@ -139,11 +139,13 @@
     <ClCompile Include="ConexionBD.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mecanico.cpp" />
+    <ClCompile Include="menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cliente.h" />
     <ClInclude Include="ConexionBD.h" />
     <ClInclude Include="Mecanico.h" />
+    <ClInclude Include="menu.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\Downloads\mecanico.sql" />
