@@ -26,8 +26,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -36,7 +48,7 @@
               "RelativeDocumentMoniker": "SISmechanic\\Mecanico.cpp",
               "ToolTip": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Mecanico.cpp",
               "RelativeToolTip": "SISmechanic\\Mecanico.cpp",
-              "ViewState": "AgIAADQAAAAAAAAAAAAewEIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-09-21T17:05:47.663Z",
               "EditorCaption": ""
@@ -51,8 +63,7 @@
               "RelativeToolTip": "SISmechanic\\Cliente.h",
               "ViewState": "AgIAABgAAAAAAAAAAAAuwCgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-09-21T17:01:56.02Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-21T17:01:56.02Z"
             },
             {
               "$type": "Document",
@@ -64,8 +75,7 @@
               "RelativeToolTip": "SISmechanic\\Mecanico.h",
               "ViewState": "AgIAABcAAAAAAAAAAAAAABsAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-09-21T16:59:38.256Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-21T16:59:38.256Z"
             },
             {
               "$type": "Document",
@@ -77,8 +87,7 @@
               "RelativeToolTip": "SISmechanic\\Cliente.cpp",
               "ViewState": "AgIAADoAAAAAAAAAAAAAAEgAAAB6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-20T16:12:18.958Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-20T16:12:18.958Z"
             }
           ]
         }
