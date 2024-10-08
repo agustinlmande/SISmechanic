@@ -1,6 +1,7 @@
 #pragma once
 #include "Cliente.h"
 #include "Mecanico.h"
+#include "Vehiculo.h"
 
 class Menu {
 public:
@@ -16,6 +17,7 @@ private:
     // Métodos privados para las operaciones CRUD de Cliente y Mecanico
     void menuClientes();
     void menuMecanicos();
+    void menuVehiculos();
 
     void crearCliente();
     void verClientes();
@@ -24,8 +26,13 @@ private:
 
     void crearMecanico();
     void verMecanicos();
-    
+    void actualizarMecanico();
     void eliminarMecanico();
+
+    void crearVehiculo();
+    void verVehiculos();
+    void actualizarVehiculo();
+    void eliminarVehiculo();
 
     // Utilidad para capturar una opción válida
     //int capturarOpcion(int min, int max);

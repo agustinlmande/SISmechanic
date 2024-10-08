@@ -158,7 +158,7 @@ void ConexionBD::precargarDatos() {
     ejecutarConsulta(R"(
         INSERT INTO Service (descripcion, fecha, costo, idMecanico, idVehiculo, idEstado) VALUES
         ('Cambio de aceite', '2023-07-15', 1500.00, 1, 1, 1),
-        ('Revisión general', '2023-08-05', 3000.00, 2, 2, 2);
+        ('Revision general', '2023-08-05', 3000.00, 2, 2, 2);
     )");
 }
 
