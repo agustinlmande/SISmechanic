@@ -2,6 +2,7 @@
 #include <iostream>
 #include <limits>
 #include "Utilidades.h"
+#include "Vehiculo.h"
 
 
 using namespace std;

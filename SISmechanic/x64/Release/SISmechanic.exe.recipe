@@ -2,7 +2,11 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+<<<<<<< HEAD
       <FullPath>C:\Users\Ricky\Source\Repos\SISmechanic\x64\Release\SISmechanic.exe</FullPath>
+=======
+      <FullPath>C:\Users\Agus\source\repos\SISmechanic\x64\Release\SISmechanic.exe</FullPath>
+>>>>>>> 0faa9da8d9a41c1af8072d72f7665b427ecfac7b
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

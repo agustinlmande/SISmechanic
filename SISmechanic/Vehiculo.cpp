@@ -55,6 +55,7 @@ void Vehiculo::leerVehiculo() {
 
 void Vehiculo::actualizarVehiculo() {
     // Solicitar los nuevos valores para actualizar el vehículo
+<<<<<<< HEAD
     cout << "Ingrese la nueva marca del vehiculo " << marca << ": ";
     cin >> marca;
 
@@ -65,6 +66,18 @@ void Vehiculo::actualizarVehiculo() {
     cin >> anio;
 
     cout << "Ingrese el nuevo ID del cliente del vehiculo " << idCliente << ": ";
+=======
+    cout << "Ingrese la nueva marca del vehículo " << marca << ": ";
+    cin >> marca;
+
+    cout << "Ingrese el nuevo modelo del vehículo " << modelo << ": ";
+    cin >> modelo;
+
+    cout << "Ingrese el nuevo año del vehículo " << anio << ": ";
+    cin >> anio;
+
+    cout << "Ingrese el nuevo ID del cliente del vehículo " << idCliente << ": ";
+>>>>>>> 0faa9da8d9a41c1af8072d72f7665b427ecfac7b
     cin >> idCliente;
 
     // Crear la consulta de actualización
