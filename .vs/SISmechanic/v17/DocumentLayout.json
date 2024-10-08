@@ -50,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,8 +70,7 @@
               "RelativeToolTip": "SISmechanic\\ConexionBD.cpp",
               "ViewState": "AgIAAL0AAAAAAAAAAAAAAKIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-10-07T02:37:41.418Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-07T02:37:41.418Z"
             },
             {
               "$type": "Document",
@@ -83,12 +82,7 @@
               "RelativeToolTip": "SISmechanic\\menu.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-10-08T22:26:07.626Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "WhenOpened": "2024-10-08T22:26:07.626Z"
             },
             {
               "$type": "Document",
@@ -112,8 +106,7 @@
               "RelativeToolTip": "SISmechanic\\menu.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-10-07T02:42:18.556Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-07T02:42:18.556Z"
             },
             {
               "$type": "Document",

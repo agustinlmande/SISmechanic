@@ -1,7 +1,9 @@
 #include "Utilidades.h"
 #include <iostream>
+#include <iomanip>
 #include <limits>
 #include <cstdlib> // Para system("CLS")
+#include <string>
 
 using namespace std;
 
@@ -17,16 +19,24 @@ void pausa() {
 
 int capturarOpcion(int min, int max) {
     int opcion;
+
     while (true) {
+        cout << "Selecciona una opción (" << min << " - " << max << "): ";
         cin >> opcion;
-        if (cin.fail() || opcion < min || opcion > max) {
-            cin.clear(); // Limpia el estado del flujo
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora la entrada
-            cout << "Opcion no valida. Intente nuevamente: ";
+
+        // Verifica si la entrada es un número válido y dentro del rango
+        if (cin.fail()) {
+            cin.clear(); // Limpia el estado de error
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora hasta el final de la línea
+            cout << "Opción inválida. Intenta nuevamente." << endl;
+        }
+        else if (opcion < min || opcion > max) {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora el resto de la línea
+            cout << "Opción fuera de rango. Intenta nuevamente." << endl;
         }
         else {
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpiar el buffer
-            return opcion;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora el resto de la línea
+            return opcion; // Retorna la opción válida
         }
     }
 }
@@ -64,4 +74,14 @@ int capturarId(const string& mensaje) {
             return id;
         }
     }
+}
+
+void encabezado(const std::string& nombreGestion) {
+    cout << setfill('=') << setw(30) << "=" << endl;
+    cout << setfill(' ') << setw(4) << " " << "#---------------------#" << endl;
+    cout << setfill(' ') << setw(4) << " " << "|     SISmechanic     |" << endl;
+    cout << setfill(' ') << setw(4) << " " << "#---------------------#" << endl;
+    cout << setfill('=') << setw(30) << "=" << endl;
+    cout << setfill(' ') << setw(11) << "Gestion de " << nombreGestion << endl;
+    cout << setfill('=') << setw(30) << "=" << endl;
 }
