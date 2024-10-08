@@ -1,7 +1,7 @@
-﻿  menu.cpp
+﻿  Utilidades.cpp
   Generando código
-  13 of 233 functions ( 5.6%) were compiled, the rest were copied from previous compilation.
+  5 of 271 functions ( 1.8%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    23 functions had inline decision re-evaluated but remain unchanged
+    24 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
   SISmechanic.vcxproj -> C:\Users\Agus\source\repos\SISmechanic\x64\Release\SISmechanic.exe

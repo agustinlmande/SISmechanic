@@ -3,6 +3,10 @@
 #include <limits>
 #include "Utilidades.h"
 #include "Vehiculo.h"
+#include <chrono>
+#include <thread>
+#include <iomanip>
+#include <string>
 
 using namespace std;
 
@@ -12,20 +16,21 @@ void Menu::mostrarMenuPrincipal() {
     int opcion;
     do {
         limpiarPantalla();
-        cout << "============================" << endl;
-        cout << "  #####################" << endl;
-        cout << "  #   SISmechanic     #" << endl;
-        cout << "  #####################" << endl;
-        cout << "============================" << endl;
-        cout << "Sistema de Gestion de Taller" << endl;
-        cout << "============================" << endl;
-        cout << "       MENU PRINCIPAL     " << endl;
-        cout << "============================" << endl;
+
+        cout << setfill('=') << setw(30) << "=" << endl;
+        cout << setfill(' ') << setw(4) << " " << "#---------------------#" << endl;
+        cout << setfill(' ') << setw(4) << " " << "|     SISmechanic     |" << endl;
+        cout << setfill(' ') << setw(4) << " " << "#---------------------#" << endl;
+        cout << setfill('=') << setw(30) << "=" << endl;
+        cout << setfill(' ') << setw(29) << "Sistema de Gestion de Taller" << endl;
+        cout << setfill('=') << setw(30) << "=" << endl;
+        cout << setfill(' ') << setw(23) << "MENU PRINCIPAL" << endl;
+        cout << setfill('=') << setw(30) << "=" << endl;
         cout << "1. Gestionar Clientes" << endl;
         cout << "2. Gestionar Mecanicos" << endl;
         cout << "3. Gestionar Vehiculos" << endl;
         cout << "4. Salir" << endl;
-        cout << "============================" << endl;
+        cout << setfill('=') << setw(30) << "=" << endl;
         opcion = capturarOpcion(1, 4);
 
         switch (opcion) {
@@ -40,6 +45,8 @@ void Menu::mostrarMenuPrincipal() {
             break;
         case 4:
             cout << "Saliendo del programa..." << endl;
+            this_thread::sleep_for(chrono::milliseconds(500));  // Pausa breve
+            limpiarPantalla();
             break;
         }
     } while (opcion != 4);
@@ -49,15 +56,13 @@ void Menu::menuClientes() {
     int opcion;
     do {
         limpiarPantalla();
-        cout << "==========================" << endl;
-        cout << "     GESTION DE CLIENTES  " << endl;
-        cout << "==========================" << endl;
+        encabezado("Clientes");
         cout << "1. Crear Cliente" << endl;
         cout << "2. Ver Clientes" << endl;
         cout << "3. Actualizar Cliente" << endl;
         cout << "4. Eliminar Cliente" << endl;
         cout << "5. Volver al menu principal" << endl;
-        cout << "==========================" << endl;
+        cout << setfill('=') << setw(30) << "=" << endl;
         opcion = capturarOpcion(1, 5);
 
         switch (opcion) {
@@ -83,14 +88,12 @@ void Menu::menuMecanicos() {
     int opcion;
     do {
         limpiarPantalla();
-        cout << "==========================" << endl;
-        cout << "    GESTION DE MECANICOS  " << endl;
-        cout << "==========================" << endl;
+        encabezado("Mecanicos");
         cout << "1. Crear Mecanico" << endl;
         cout << "2. Ver Mecanicos" << endl;
         cout << "3. Eliminar Mecanico" << endl;
         cout << "4. Volver al menu principal" << endl;
-        cout << "==========================" << endl;
+        cout << setfill('=') << setw(30) << "=" << endl;
         opcion = capturarOpcion(1, 4);
 
         switch (opcion) {
@@ -113,15 +116,13 @@ void Menu::menuVehiculos() {
     int opcion;
     do {
         limpiarPantalla();
-        cout << "==========================" << endl;
-        cout << "    GESTION DE VEHICULOS  " << endl;
-        cout << "==========================" << endl;
+        encabezado("Vehiculos");
         cout << "1. Crear vehiculo" << endl;
         cout << "2. Ver vehiculos" << endl;
         cout << "3. Eliminar vehiculo" << endl;
         cout << "3. Actualizar vehiculo" << endl;
         cout << "4. Volver al menu principal" << endl;
-        cout << "==========================" << endl;
+        cout << setfill('=') << setw(30) << "=" << endl;
         opcion = capturarOpcion(1, 5);
 
         switch (opcion) {

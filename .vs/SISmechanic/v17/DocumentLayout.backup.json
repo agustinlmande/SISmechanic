@@ -7,16 +7,36 @@
       "RelativeMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|solutionrelative:SISmechanic\\menu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\ConexionBD.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|solutionrelative:SISmechanic\\ConexionBD.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Utilidades.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|solutionrelative:SISmechanic\\Utilidades.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\menu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|solutionrelative:SISmechanic\\menu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Utilidades.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|solutionrelative:SISmechanic\\Utilidades.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|solutionrelative:SISmechanic\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Login.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|solutionrelative:SISmechanic\\Login.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Cliente.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|solutionrelative:SISmechanic\\Cliente.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Login.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|solutionrelative:SISmechanic\\Login.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\ConexionBD.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{869823E6-07FA-4B26-89FD-FA9365BBEF12}|SISmechanic\\SISmechanic.vcxproj|solutionrelative:SISmechanic\\ConexionBD.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -43,6 +63,71 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Utilidades.cpp",
+              "DocumentMoniker": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Utilidades.cpp",
+              "RelativeDocumentMoniker": "SISmechanic\\Utilidades.cpp",
+              "ToolTip": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Utilidades.cpp",
+              "RelativeToolTip": "SISmechanic\\Utilidades.cpp",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAABMAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-08T14:56:46.472Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Utilidades.h",
+              "DocumentMoniker": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Utilidades.h",
+              "RelativeDocumentMoniker": "SISmechanic\\Utilidades.h",
+              "ToolTip": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Utilidades.h",
+              "RelativeToolTip": "SISmechanic\\Utilidades.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-10-08T14:58:59.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Login.h",
+              "DocumentMoniker": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Login.h",
+              "RelativeDocumentMoniker": "SISmechanic\\Login.h",
+              "ToolTip": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Login.h",
+              "RelativeToolTip": "SISmechanic\\Login.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-10-08T14:02:03.764Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "menu.cpp",
+              "DocumentMoniker": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\menu.cpp",
+              "RelativeDocumentMoniker": "SISmechanic\\menu.cpp",
+              "ToolTip": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\menu.cpp",
+              "RelativeToolTip": "SISmechanic\\menu.cpp",
+              "ViewState": "AgIAACQAAAAAAAAAAAAuwDQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-07T15:29:16.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\main.cpp",
+              "RelativeDocumentMoniker": "SISmechanic\\main.cpp",
+              "ToolTip": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\main.cpp",
+              "RelativeToolTip": "SISmechanic\\main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-08T14:06:26.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "ConexionBD.cpp",
               "DocumentMoniker": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\ConexionBD.cpp",
               "RelativeDocumentMoniker": "SISmechanic\\ConexionBD.cpp",
@@ -50,12 +135,11 @@
               "RelativeToolTip": "SISmechanic\\ConexionBD.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-10-07T16:12:02.749Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-07T16:12:02.749Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Cliente.h",
               "DocumentMoniker": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Cliente.h",
               "RelativeDocumentMoniker": "SISmechanic\\Cliente.h",
@@ -68,28 +152,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "menu.cpp",
-              "DocumentMoniker": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\menu.cpp",
-              "RelativeDocumentMoniker": "SISmechanic\\menu.cpp",
-              "ToolTip": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\menu.cpp",
-              "RelativeToolTip": "SISmechanic\\menu.cpp",
-              "ViewState": "AgIAAAsBAAAAAAAAAAAuwBMBAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-10-07T15:29:16.042Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
               "Title": "menu.h",
               "DocumentMoniker": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\menu.h",
               "RelativeDocumentMoniker": "SISmechanic\\menu.h",
               "ToolTip": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\menu.h",
               "RelativeToolTip": "SISmechanic\\menu.h",
-              "ViewState": "AgIAABEAAAAAAAAAAAAuwB8AAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAewBIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-10-07T15:27:07.28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Login.cpp",
+              "DocumentMoniker": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Login.cpp",
+              "RelativeDocumentMoniker": "SISmechanic\\Login.cpp",
+              "ToolTip": "C:\\Users\\Agus\\source\\repos\\SISmechanic\\SISmechanic\\Login.cpp",
+              "RelativeToolTip": "SISmechanic\\Login.cpp",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-08T14:04:10.993Z",
               "EditorCaption": ""
             }
           ]
