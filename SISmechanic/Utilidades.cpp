@@ -12,7 +12,7 @@ void limpiarPantalla() {
 }
 
 void pausa() {
-    cout << "Presione Enter para continuar...";
+    cout << "Presione dos veces Enter para continuar...";
     cin.ignore();
     cin.get();
 }
@@ -90,7 +90,7 @@ void encabezado(const std::string& nombreGestion) {
 char capturarConfirmacion() {
     char respuesta;
     do {
-        cout << "¿Desea continuar? (S/N): ";
+        cout << "Desea continuar? (S/N): ";
         cin >> respuesta;
         respuesta = tolower(respuesta);  // Convierte a minúscula para comparar fácilmente
         if (respuesta != 's' && respuesta != 'n') {

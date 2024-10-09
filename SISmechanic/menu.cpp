@@ -158,7 +158,7 @@ void Menu::crearCliente() {
     cout << "Ingrese el email del cliente: ";
     cin >> email;
 
-    cout << "¿Confirma la creacion del cliente? (S/N): ";
+    cout << "Confirma la creacion del cliente ";
     char confirmacion = capturarConfirmacion();
 
     if (confirmacion == 's') {
@@ -190,7 +190,7 @@ void Menu::actualizarCliente() {
     Cliente cliente(conexion);
     cliente.setIdCliente(id);
 
-    cout << "¿Confirma la actualización del cliente? (S/N): ";
+    cout << "Confirma la actualizacion del cliente ";
     char confirmacion = capturarConfirmacion();
 
     if (confirmacion == 's') {
@@ -213,7 +213,7 @@ void Menu::eliminarCliente() {
     Cliente cliente(conexion);
     cliente.setIdCliente(id);
 
-    cout << "¿Confirma la eliminación del cliente? (S/N): ";
+    cout << "Confirma la eliminacion del cliente ";
     char confirmacion = capturarConfirmacion();
 
     if (confirmacion == 's') {
@@ -221,7 +221,7 @@ void Menu::eliminarCliente() {
         cout << "Cliente eliminado exitosamente!" << endl;
     }
     else {
-        cout << "Operación cancelada." << endl;
+        cout << "Operacion cancelada." << endl;
     }
 
     pausa();
@@ -243,7 +243,7 @@ void Menu::crearMecanico() {
     cout << "Ingrese el email del mecanico: ";
     cin >> email;
 
-    cout << "¿Confirma la creación del mecánico? (S/N): ";
+    cout << "Confirma la creacion del mecanico ";
     char confirmacion = capturarConfirmacion();
 
     if (confirmacion == 's') {
@@ -275,7 +275,7 @@ void Menu::actualizarMecanico() {
     Mecanico mecanico(conexion);
     mecanico.setIdMecanico(id);
 
-    cout << "¿Confirma la actualización del mecanico? (S/N): ";
+    cout << "Confirma la actualizacion del mecanico ";
     char confirmacion = capturarConfirmacion();
 
     if (confirmacion == 's') {
@@ -298,7 +298,7 @@ void Menu::eliminarMecanico() {
     Mecanico mecanico(conexion);
     mecanico.setIdMecanico(id);
 
-    cout << "¿Confirma la eliminación del mecanico? (S/N): ";
+    cout << "Confirma la eliminacion del mecanico ";
     char confirmacion = capturarConfirmacion();
 
     if (confirmacion == 's') {
@@ -327,7 +327,7 @@ void Menu::crearVehiculo() {
     cin >> anio;
     idCliente = capturarId("Ingrese el ID del cliente asociado: ");
 
-    cout << "¿Confirma la creación del vehiculo? (S/N): ";
+    cout << "Confirma la creacion del vehiculo ";
     char confirmacion = capturarConfirmacion();
 
     if (confirmacion == 's') {
@@ -361,7 +361,7 @@ void Menu::actualizarVehiculo() {
     Vehiculo vehiculo(conexion);
     vehiculo.setIdVehiculo(id);
 
-    cout << "¿Confirma la actualizacion del vehiculo? (S/N): ";
+    cout << "Confirma la actualizacion del vehiculo ";
     char confirmacion = capturarConfirmacion();
 
     if (confirmacion == 's') {
@@ -384,7 +384,7 @@ void Menu::eliminarVehiculo() {
     Vehiculo vehiculo(conexion);
     vehiculo.setIdVehiculo(id);
 
-    cout << "¿Confirma la eliminacion del vehiculo? (S/N): ";
+    cout << "Confirma la eliminacion del vehiculo ";
     char confirmacion = capturarConfirmacion();
 
     if (confirmacion == 's') {
