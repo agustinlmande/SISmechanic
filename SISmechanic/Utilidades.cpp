@@ -21,18 +21,18 @@ int capturarOpcion(int min, int max) {
     int opcion;
 
     while (true) {
-        cout << "Selecciona una opción (" << min << " - " << max << "): ";
+        cout << "Selecciona una opcion (" << min << " - " << max << "): ";
         cin >> opcion;
 
         // Verifica si la entrada es un número válido y dentro del rango
         if (cin.fail()) {
             cin.clear(); // Limpia el estado de error
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora hasta el final de la línea
-            cout << "Opción inválida. Intenta nuevamente." << endl;
+            cout << "Opcion invalida. Intenta nuevamente." << endl;
         }
         else if (opcion < min || opcion > max) {
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora el resto de la línea
-            cout << "Opción fuera de rango. Intenta nuevamente." << endl;
+            cout << "Opcion fuera de rango. Intenta nuevamente." << endl;
         }
         else {
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora el resto de la línea
@@ -84,4 +84,19 @@ void encabezado(const std::string& nombreGestion) {
     cout << setfill('=') << setw(30) << "=" << endl;
     cout << setfill(' ') << setw(11) << "Gestion de " << nombreGestion << endl;
     cout << setfill('=') << setw(30) << "=" << endl;
+}
+
+// Verifica si la entrada es válida y dentro del rango por s o n para confirmar diferentes funciones del CRUD
+char capturarConfirmacion() {
+    char respuesta;
+    do {
+        cout << "¿Desea continuar? (S/N): ";
+        cin >> respuesta;
+        respuesta = tolower(respuesta);  // Convierte a minúscula para comparar fácilmente
+        if (respuesta != 's' && respuesta != 'n') {
+            cout << "Entrada invalida. Por favor, ingrese 'S' o 'N'." << endl;
+        }
+    } while (respuesta != 's' && respuesta != 'n');
+
+    return respuesta;
 }

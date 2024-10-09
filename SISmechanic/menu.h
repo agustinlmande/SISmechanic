@@ -1,11 +1,8 @@
 #pragma once
 #include "Cliente.h"
 #include "Mecanico.h"
-<<<<<<< HEAD
 #include "Vehiculo.h"
-=======
 #include "Utilidades.h"
->>>>>>> origin/rama-agustin
 
 class Menu {
 public:

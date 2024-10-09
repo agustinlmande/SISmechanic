@@ -158,9 +158,17 @@ void Menu::crearCliente() {
     cout << "Ingrese el email del cliente: ";
     cin >> email;
 
-    Cliente cliente(conexion, 0, dni, nombre, apellido, tel, email);
-    cliente.crearCliente();
-    cout << "Cliente creado exitosamente!" << endl;
+    cout << "¿Confirma la creacion del cliente? (S/N): ";
+    char confirmacion = capturarConfirmacion();
+
+    if (confirmacion == 's') {
+        Cliente cliente(conexion, 0, dni, nombre, apellido, tel, email);
+        cliente.crearCliente();
+        cout << "Cliente creado exitosamente!" << endl;
+    }
+    else {
+        cout << "Operacion cancelada." << endl;
+    }
 
     pausa();
     limpiarPantalla();
@@ -181,12 +189,22 @@ void Menu::actualizarCliente() {
 
     Cliente cliente(conexion);
     cliente.setIdCliente(id);
-    cliente.actualizarCliente();
-    cout << "Cliente actualizado exitosamente!" << endl;
+
+    cout << "¿Confirma la actualización del cliente? (S/N): ";
+    char confirmacion = capturarConfirmacion();
+
+    if (confirmacion == 's') {
+        cliente.actualizarCliente();
+        cout << "Cliente actualizado exitosamente!" << endl;
+    }
+    else {
+        cout << "Operacion cancelada." << endl;
+    }
 
     pausa();
     limpiarPantalla();
 }
+
 
 void Menu::eliminarCliente() {
     limpiarPantalla();
@@ -194,12 +212,23 @@ void Menu::eliminarCliente() {
 
     Cliente cliente(conexion);
     cliente.setIdCliente(id);
-    cliente.eliminarCliente();
-    cout << "Cliente eliminado exitosamente!" << endl;
+
+    cout << "¿Confirma la eliminación del cliente? (S/N): ";
+    char confirmacion = capturarConfirmacion();
+
+    if (confirmacion == 's') {
+        cliente.eliminarCliente();
+        cout << "Cliente eliminado exitosamente!" << endl;
+    }
+    else {
+        cout << "Operación cancelada." << endl;
+    }
 
     pausa();
     limpiarPantalla();
 }
+
+
 
 void Menu::crearMecanico() {
     limpiarPantalla();
@@ -214,9 +243,17 @@ void Menu::crearMecanico() {
     cout << "Ingrese el email del mecanico: ";
     cin >> email;
 
-    Mecanico mecanico(conexion, 0, dni, nombre, apellido, tel, email);
-    mecanico.crearMecanico();
-    cout << "Mecanico creado exitosamente!" << endl;
+    cout << "¿Confirma la creación del mecánico? (S/N): ";
+    char confirmacion = capturarConfirmacion();
+
+    if (confirmacion == 's') {
+        Mecanico mecanico(conexion, 0, dni, nombre, apellido, tel, email);
+        mecanico.crearMecanico();
+        cout << "Mecanico creado exitosamente!" << endl;
+    }
+    else {
+        cout << "Operacion cancelada." << endl;
+    }
 
     pausa();
     limpiarPantalla();
@@ -237,12 +274,22 @@ void Menu::actualizarMecanico() {
 
     Mecanico mecanico(conexion);
     mecanico.setIdMecanico(id);
-    mecanico.actualizarMecanico();
-    cout << "Mecanico actualizado exitosamente!" << endl;
+
+    cout << "¿Confirma la actualización del mecanico? (S/N): ";
+    char confirmacion = capturarConfirmacion();
+
+    if (confirmacion == 's') {
+        mecanico.actualizarMecanico();
+        cout << "Mecanico actualizado exitosamente!" << endl;
+    }
+    else {
+        cout << "Operacion cancelada." << endl;
+    }
 
     pausa();
     limpiarPantalla();
 }
+
 
 void Menu::eliminarMecanico() {
     limpiarPantalla();
@@ -250,33 +297,53 @@ void Menu::eliminarMecanico() {
 
     Mecanico mecanico(conexion);
     mecanico.setIdMecanico(id);
-    mecanico.eliminarMecanico();
-    cout << "Mecanico eliminado exitosamente!" << endl;
+
+    cout << "¿Confirma la eliminación del mecanico? (S/N): ";
+    char confirmacion = capturarConfirmacion();
+
+    if (confirmacion == 's') {
+        mecanico.eliminarMecanico();
+        cout << "Mecanico eliminado exitosamente!" << endl;
+    }
+    else {
+        cout << "Operacion cancelada." << endl;
+    }
 
     pausa();
     limpiarPantalla();
 }
+
 
 void Menu::crearVehiculo() {
     limpiarPantalla();
     string marca, modelo;
     int anio, idCliente;
 
-    cout << "Ingrese la marca del vehículo: ";
+    cout << "Ingrese la marca del vehiculo: ";
     cin >> marca;
-    cout << "Ingrese el modelo del vehículo: ";
+    cout << "Ingrese el modelo del vehiculo: ";
     cin >> modelo;
-    cout << "Ingrese año del vehículo: ";
+    cout << "Ingrese año del vehiculo: ";
     cin >> anio;
     idCliente = capturarId("Ingrese el ID del cliente asociado: ");
 
-    Vehiculo vehiculo(conexion, 0, marca, modelo, anio, idCliente); 
-    vehiculo.crearVehiculo();
-    cout << "Vehículo creado exitosamente!" << endl;
+    cout << "¿Confirma la creación del vehiculo? (S/N): ";
+    char confirmacion = capturarConfirmacion();
+
+    if (confirmacion == 's') {
+        Vehiculo vehiculo(conexion, 0, marca, modelo, anio, idCliente);
+        vehiculo.crearVehiculo();
+        cout << "Vehiculo creado exitosamente!" << endl;
+    }
+    else {
+        cout << "Operacion cancelada." << endl;
+    }
 
     pausa();
     limpiarPantalla();
 }
+
+
 
 void Menu::verVehiculos() {
     limpiarPantalla();
@@ -293,21 +360,40 @@ void Menu::actualizarVehiculo() {
 
     Vehiculo vehiculo(conexion);
     vehiculo.setIdVehiculo(id);
-    vehiculo.actualizarVehiculo();
-    cout << "Vehiculo actualizado exitosamente!" << endl;
+
+    cout << "¿Confirma la actualizacion del vehiculo? (S/N): ";
+    char confirmacion = capturarConfirmacion();
+
+    if (confirmacion == 's') {
+        vehiculo.actualizarVehiculo();
+        cout << "Vehiculo actualizado exitosamente!" << endl;
+    }
+    else {
+        cout << "Operacion cancelada." << endl;
+    }
 
     pausa();
     limpiarPantalla();
 }
 
+
 void Menu::eliminarVehiculo() {
     limpiarPantalla();
-    int id = capturarId("Ingrese el ID del vehículo que desea eliminar: ");
+    int id = capturarId("Ingrese el ID del vehiculo que desea eliminar: ");
 
     Vehiculo vehiculo(conexion);
     vehiculo.setIdVehiculo(id);
-    vehiculo.eliminarVehiculo();
-    cout << "Vehículo eliminado exitosamente!" << endl;
+
+    cout << "¿Confirma la eliminacion del vehiculo? (S/N): ";
+    char confirmacion = capturarConfirmacion();
+
+    if (confirmacion == 's') {
+        vehiculo.eliminarVehiculo();
+        cout << "Vehiculo eliminado exitosamente!" << endl;
+    }
+    else {
+        cout << "Operacion cancelada." << endl;
+    }
 
     pausa();
     limpiarPantalla();

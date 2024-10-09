@@ -16,7 +16,7 @@ void ConexionBD::abrir_conexion() {
     }
 
     // Ajustar el puerto según corresponda, cambiando 3306 si usas otro puerto
-    conector = mysql_real_connect(conector, "localhost", "root", "", "", 3306, nullptr, 0);
+    conector = mysql_real_connect(conector, "localhost", "root", "", "", 3307, nullptr, 0);
     if (!conector) {
         cerr << "Error al conectar a MySQL: " << mysql_error(conector) << endl;
         return;
@@ -125,42 +125,125 @@ void ConexionBD::crearTablas() {
 }
 
 void ConexionBD::precargarDatos() {
-    // Precargar datos en la tabla Estado
-    ejecutarConsulta(R"(
-        INSERT INTO Estado (descripcion) VALUES
-        ('Pendiente'),
-        ('En Proceso'),
-        ('Finalizado');
-    )");
+    // Verificar si la tabla Estado ya tiene datos
+    if (mysql_query(conector, "SELECT COUNT(*) FROM Estado")) {
+        cerr << "Error al contar registros en la tabla Estado: " << mysql_error(conector) << endl;
+        return;
+    }
 
-    // Precargar datos en la tabla Mecanico
-    ejecutarConsulta(R"(
-       INSERT INTO Cliente (dniCliente, nombreCliente, apellidoCliente, telCliente, emailCliente) VALUES
-      ('45678912', 'Lucia', 'Fernandez', '1122334455', 'lucia.fernandez@example.com'),
-      ('78912345', 'Miguel', 'Ramirez', '5566778899', 'miguel.ramirez@example.com');
-    )");
+    MYSQL_RES* resEstado = mysql_store_result(conector);
+    MYSQL_ROW rowEstado = mysql_fetch_row(resEstado);
+    int countEstado = atoi(rowEstado[0]);
 
-    // Precargar datos en la tabla Mecanico
-    ejecutarConsulta(R"(
-        INSERT INTO Mecanico (DniMecanico, NombreMecanico, ApellidoMecanico, TelMecanico, EmailMecanico) VALUES
-      ('12345678', 'Pedro', 'Gonzalez', '111222333', 'pedro.gonzalez@example.com'),
-      ('87654321', 'Laura', 'Martinez', '444555666', 'laura.martinez@example.com');
-    )");
+    if (countEstado == 0) {
+        // Precargar datos en la tabla Estado
+        ejecutarConsulta(R"(
+            INSERT INTO Estado (descripcion) VALUES
+            ('Pendiente'),
+            ('En Proceso'),
+            ('Finalizado');
+        )");
+    }
+    else {
+        cout << "La tabla Estado ya tiene datos." << endl;
+    }
 
-    // Precargar datos en la tabla Vehiculo
-    ejecutarConsulta(R"(
-        INSERT INTO Vehiculo (marca, modelo, anio, idCliente) VALUES
-        ('Toyota', 'Corolla', 2018, 1),
-        ('Ford', 'Fiesta', 2020, 2);
-    )");
+    // Verificar si la tabla Cliente ya tiene datos
+    if (mysql_query(conector, "SELECT COUNT(*) FROM Cliente")) {
+        cerr << "Error al contar registros en la tabla Cliente: " << mysql_error(conector) << endl;
+        return;
+    }
 
-    // Precargar datos en la tabla Service
-    ejecutarConsulta(R"(
-        INSERT INTO Service (descripcion, fecha, costo, idMecanico, idVehiculo, idEstado) VALUES
-        ('Cambio de aceite', '2023-07-15', 1500.00, 1, 1, 1),
-        ('Revision general', '2023-08-05', 3000.00, 2, 2, 2);
-    )");
+    MYSQL_RES* resCliente = mysql_store_result(conector);
+    MYSQL_ROW rowCliente = mysql_fetch_row(resCliente);
+    int countCliente = atoi(rowCliente[0]);
+
+    if (countCliente == 0) {
+        // Precargar datos en la tabla Cliente
+        ejecutarConsulta(R"(
+           INSERT INTO Cliente (dniCliente, nombreCliente, apellidoCliente, telCliente, emailCliente) VALUES
+          ('45678912', 'Lucia', 'Fernandez', '1122334455', 'lucia.fernandez@example.com'),
+          ('78912345', 'Miguel', 'Ramirez', '5566778899', 'miguel.ramirez@example.com');
+        )");
+    }
+    else {
+        cout << "La tabla Cliente ya tiene datos." << endl;
+    }
+
+    // Verificar si la tabla Mecanico ya tiene datos
+    if (mysql_query(conector, "SELECT COUNT(*) FROM Mecanico")) {
+        cerr << "Error al contar registros en la tabla Mecanico: " << mysql_error(conector) << endl;
+        return;
+    }
+
+    MYSQL_RES* resMecanico = mysql_store_result(conector);
+    MYSQL_ROW rowMecanico = mysql_fetch_row(resMecanico);
+    int countMecanico = atoi(rowMecanico[0]);
+
+    if (countMecanico == 0) {
+        // Precargar datos en la tabla Mecanico
+        ejecutarConsulta(R"(
+            INSERT INTO Mecanico (DniMecanico, NombreMecanico, ApellidoMecanico, TelMecanico, EmailMecanico) VALUES
+          ('12345678', 'Pedro', 'Gonzalez', '111222333', 'pedro.gonzalez@example.com'),
+          ('87654321', 'Laura', 'Martinez', '444555666', 'laura.martinez@example.com');
+        )");
+    }
+    else {
+        cout << "La tabla Mecanico ya tiene datos." << endl;
+    }
+
+    // Verificar si la tabla Vehiculo ya tiene datos
+    if (mysql_query(conector, "SELECT COUNT(*) FROM Vehiculo")) {
+        cerr << "Error al contar registros en la tabla Vehiculo: " << mysql_error(conector) << endl;
+        return;
+    }
+
+    MYSQL_RES* resVehiculo = mysql_store_result(conector);
+    MYSQL_ROW rowVehiculo = mysql_fetch_row(resVehiculo);
+    int countVehiculo = atoi(rowVehiculo[0]);
+
+    if (countVehiculo == 0) {
+        // Precargar datos en la tabla Vehiculo
+        ejecutarConsulta(R"(
+            INSERT INTO Vehiculo (marca, modelo, anio, idCliente) VALUES
+            ('Toyota', 'Corolla', 2018, 1),
+            ('Ford', 'Fiesta', 2020, 2);
+        )");
+    }
+    else {
+        cout << "La tabla Vehiculo ya tiene datos." << endl;
+    }
+
+    // Verificar si la tabla Service ya tiene datos
+    if (mysql_query(conector, "SELECT COUNT(*) FROM Service")) {
+        cerr << "Error al contar registros en la tabla Service: " << mysql_error(conector) << endl;
+        return;
+    }
+
+    MYSQL_RES* resService = mysql_store_result(conector);
+    MYSQL_ROW rowService = mysql_fetch_row(resService);
+    int countService = atoi(rowService[0]);
+
+    if (countService == 0) {
+        // Precargar datos en la tabla Service
+        ejecutarConsulta(R"(
+            INSERT INTO Service (descripcion, fecha, costo, idMecanico, idVehiculo, idEstado) VALUES
+            ('Cambio de aceite', '2023-07-15', 1500.00, 1, 1, 1),
+            ('Revision general', '2023-08-05', 3000.00, 2, 2, 2);
+        )");
+    }
+    else {
+        cout << "La tabla Service ya tiene datos." << endl;
+    }
+
+    // Liberar resultados
+    mysql_free_result(resEstado);
+    mysql_free_result(resCliente);
+    mysql_free_result(resMecanico);
+    mysql_free_result(resVehiculo);
+    mysql_free_result(resService);
 }
+
 
 MYSQL* ConexionBD::getConector() {
     return conector;
