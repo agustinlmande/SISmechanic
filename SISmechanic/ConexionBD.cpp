@@ -16,7 +16,7 @@ void ConexionBD::abrir_conexion() {
     }
 
     // Ajustar el puerto según corresponda, cambiando 3306 si usas otro puerto
-    conector = mysql_real_connect(conector, "localhost", "root", "", "", 3307, nullptr, 0);
+    conector = mysql_real_connect(conector, "localhost", "root", "", "", 3306, nullptr, 0);
     if (!conector) {
         cerr << "Error al conectar a MySQL: " << mysql_error(conector) << endl;
         return;
@@ -52,7 +52,7 @@ void ConexionBD::crearTablas() {
     ejecutarConsulta(R"(
         CREATE TABLE IF NOT EXISTS Mecanico (
             idMecanico INT AUTO_INCREMENT PRIMARY KEY,
-            DniMecanico VARCHAR(50) NOT NULL,
+            DniMecanico VARCHAR(50) UNIQUE NOT NULL,
             NombreMecanico VARCHAR(50) NOT NULL,
             ApellidoMecanico VARCHAR(50) NOT NULL,
             TelMecanico VARCHAR(20),
@@ -64,7 +64,7 @@ void ConexionBD::crearTablas() {
     ejecutarConsulta(R"(
         CREATE TABLE IF NOT EXISTS Cliente (
             IdCliente INT AUTO_INCREMENT PRIMARY KEY,
-            dniCliente varchar(30) NOT NULL,
+            dniCliente varchar(30) UNIQUE NOT NULL,
             nombreCliente VARCHAR(50) NOT NULL,
             apellidoCliente varchar(50) NOT NULL,
             telCliente VARCHAR(20),
@@ -77,6 +77,7 @@ void ConexionBD::crearTablas() {
     ejecutarConsulta(R"(
         CREATE TABLE IF NOT EXISTS Vehiculo (
             idVehiculo INT AUTO_INCREMENT PRIMARY KEY,
+            patente VARCHAR(50) UNIQUE NOT NULL,
             marca VARCHAR(50) NOT NULL,
             modelo VARCHAR(50) NOT NULL,
             anio INT,
@@ -206,8 +207,8 @@ void ConexionBD::precargarDatos() {
         // Precargar datos en la tabla Vehiculo
         ejecutarConsulta(R"(
             INSERT INTO Vehiculo (marca, modelo, anio, idCliente) VALUES
-            ('Toyota', 'Corolla', 2018, 1),
-            ('Ford', 'Fiesta', 2020, 2);
+            ('IFD503', 'Toyota', 'Corolla', 2018, 1),
+            ('AD123FG', 'Ford', 'Fiesta', 2020, 2);
         )");
     }
     else {

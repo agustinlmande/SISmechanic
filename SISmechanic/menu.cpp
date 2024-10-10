@@ -180,15 +180,20 @@ void Menu::verClientes() {
     cliente.leerClientes();
 
     pausa();
+
     limpiarPantalla();
+    
 }
 
 void Menu::actualizarCliente() {
     limpiarPantalla();
-    int id = capturarId("Ingrese el ID del cliente que desea actualizar: ");
+    
+    verClientes();
+
+    string dni = capturarDni("Ingrese el DNI del cliente que desea actualizar: ");
 
     Cliente cliente(conexion);
-    cliente.setIdCliente(id);
+    cliente.setdniCliente(dni);
 
     cout << "Confirma la actualizacion del cliente ";
     char confirmacion = capturarConfirmacion();

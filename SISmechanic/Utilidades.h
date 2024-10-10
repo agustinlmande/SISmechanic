@@ -3,12 +3,15 @@
 
 #include <string>
 
+using namespace std;
+
 void limpiarPantalla();
 void pausa();
 int capturarOpcion(int min, int max);
-std::string capturarStringNumerico(const std::string& mensaje);
-int capturarId(const std::string& mensaje);
-void encabezado(const std::string& nombreGestion);
+string capturarStringNumerico(const string& mensaje);
+int capturarId(const string& mensaje);
+string capturarDni(const string& mensaje);
+void encabezado(const string& nombreGestion);
 char capturarConfirmacion();
 #endif // Utilidades_h
 
