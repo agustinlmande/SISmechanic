@@ -106,6 +106,37 @@ string capturarDni(const string& mensaje) {
     }
 }
 
+string capturarPatente(const string& mensaje) {
+    string patente;
+    while (true) {
+        cout << mensaje;
+        getline(cin, patente);
+
+        // Verifica que la patente no esté vacía
+        if (patente.empty()) {
+            cout << "Patente no valida. Intente nuevamente: ";
+            continue;
+        }
+
+        // Verifica que la patente solo contenga letras o números
+        bool valido = true;
+        for (char c : patente) {
+            if (!isalnum(c)) {
+                valido = false;
+                break;
+            }
+        }
+
+        if (!valido) {
+            cout << "Patente no valida. Intente nuevamente: ";
+        }
+        else {
+            return patente;
+        }
+    }
+}
+
+
 
 void encabezado(const std::string& nombreGestion) {
     cout << setfill('=') << setw(30) << "=" << endl;
