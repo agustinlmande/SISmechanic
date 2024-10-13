@@ -52,7 +52,7 @@ void ConexionBD::crearTablas() {
     ejecutarConsulta(R"(
         CREATE TABLE IF NOT EXISTS Mecanico (
             idMecanico INT AUTO_INCREMENT PRIMARY KEY,
-            DniMecanico VARCHAR(50) NOT NULL,
+            DniMecanico VARCHAR(50) UNIQUE NOT NULL,
             NombreMecanico VARCHAR(50) NOT NULL,
             ApellidoMecanico VARCHAR(50) NOT NULL,
             TelMecanico VARCHAR(20),
@@ -64,7 +64,7 @@ void ConexionBD::crearTablas() {
     ejecutarConsulta(R"(
         CREATE TABLE IF NOT EXISTS Cliente (
             IdCliente INT AUTO_INCREMENT PRIMARY KEY,
-            dniCliente varchar(30) NOT NULL,
+            dniCliente varchar(30) UNIQUE NOT NULL,
             nombreCliente VARCHAR(50) NOT NULL,
             apellidoCliente varchar(50) NOT NULL,
             telCliente VARCHAR(20),
@@ -77,6 +77,7 @@ void ConexionBD::crearTablas() {
     ejecutarConsulta(R"(
         CREATE TABLE IF NOT EXISTS Vehiculo (
             idVehiculo INT AUTO_INCREMENT PRIMARY KEY,
+            patente VARCHAR(50) UNIQUE NOT NULL,
             marca VARCHAR(50) NOT NULL,
             modelo VARCHAR(50) NOT NULL,
             anio INT,
@@ -205,9 +206,9 @@ void ConexionBD::precargarDatos() {
     if (countVehiculo == 0) {
         // Precargar datos en la tabla Vehiculo
         ejecutarConsulta(R"(
-            INSERT INTO Vehiculo (marca, modelo, anio, idCliente) VALUES
-            ('Toyota', 'Corolla', 2018, 1),
-            ('Ford', 'Fiesta', 2020, 2);
+            INSERT INTO Vehiculo (patente, marca, modelo, anio, idCliente) VALUES
+            ('IFD503', 'Toyota', 'Corolla', 2018, 1),
+            ('AD123FG', 'Ford', 'Fiesta', 2020, 2);
         )");
     }
     else {
@@ -236,12 +237,36 @@ void ConexionBD::precargarDatos() {
         cout << "La tabla Service ya tiene datos." << endl;
     }
 
+    // Verificar si la tabla Vehiculo_has_Service ya tiene datos
+    if (mysql_query(conector, "SELECT COUNT(*) FROM Vehiculo_has_Service")) {
+        cerr << "Error al contar registros en la tabla Vehiculo_has_Service: " << mysql_error(conector) << endl;
+        return;
+    }
+
+    MYSQL_RES* resVehiculoService = mysql_store_result(conector);
+    MYSQL_ROW rowVehiculoService = mysql_fetch_row(resVehiculoService);
+    int countVehiculoService = atoi(rowVehiculoService[0]);
+
+    if (countVehiculoService == 0) {
+        // Precargar datos en la tabla Vehiculo_has_Service
+        ejecutarConsulta(R"(
+        INSERT INTO Vehiculo_has_Service (Vehiculo_idVehiculo, Service_idService) VALUES
+        (1, 1),  -- El vehiculo con id 1 recibe el servicio con id 1
+        (2, 2);  -- El vehiculo con id 2 recibe el servicio con id 2
+    )");
+    }
+    else {
+        cout << "La tabla Vehiculo_has_Service ya tiene datos." << endl;
+    }
+
+
     // Liberar resultados
     mysql_free_result(resEstado);
     mysql_free_result(resCliente);
     mysql_free_result(resMecanico);
     mysql_free_result(resVehiculo);
     mysql_free_result(resService);
+    mysql_free_result(resVehiculoService);
 }
 
 

@@ -72,6 +72,9 @@ void Menu::menuClientes() {
             break;
         case 2:
             verClientes();
+            pausa();
+
+            limpiarPantalla();
             break;
         case 3:
             actualizarCliente();
@@ -93,9 +96,10 @@ void Menu::menuMecanicos() {
         cout << "1. Crear Mecanico" << endl;
         cout << "2. Ver Mecanicos" << endl;
         cout << "3. Eliminar Mecanico" << endl;
-        cout << "4. Volver al menu principal" << endl;
+        cout << "4. Actualizar Mecanico" << endl;
+        cout << "5. Volver al menu principal" << endl;
         cout << setfill('=') << setw(30) << "=" << endl;
-        opcion = capturarOpcion(1, 4);
+        opcion = capturarOpcion(1, 5);
 
         switch (opcion) {
         case 1:
@@ -103,14 +107,19 @@ void Menu::menuMecanicos() {
             break;
         case 2:
             verMecanicos();
+            pausa();
+            limpiarPantalla();
             break;
         case 3:
             eliminarMecanico();
             break;
         case 4:
+            actualizarMecanico();
+            break;
+        case 5:
             return;
         }
-    } while (opcion != 4);
+    } while (opcion != 5);
 }
 
 void Menu::menuVehiculos() {
@@ -121,8 +130,8 @@ void Menu::menuVehiculos() {
         cout << "1. Crear vehiculo" << endl;
         cout << "2. Ver vehiculos" << endl;
         cout << "3. Eliminar vehiculo" << endl;
-        cout << "3. Actualizar vehiculo" << endl;
-        cout << "4. Volver al menu principal" << endl;
+        cout << "4. Actualizar vehiculo" << endl;
+        cout << "5. Volver al menu principal" << endl;
         cout << setfill('=') << setw(30) << "=" << endl;
         opcion = capturarOpcion(1, 5);
 
@@ -132,17 +141,19 @@ void Menu::menuVehiculos() {
             break;
         case 2:
             verVehiculos();
+            pausa();
+            limpiarPantalla();
             break;
         case 3:
-            actualizarVehiculo();
+            eliminarVehiculo();
             break;
         case 4:
-            eliminarVehiculo();
+            actualizarVehiculo();
             break;
         case 5:
             return;
         }
-    } while (opcion != 4);
+    } while (opcion != 5);
 }
 
 void Menu::crearCliente() {
@@ -179,16 +190,21 @@ void Menu::verClientes() {
     Cliente cliente(conexion);
     cliente.leerClientes();
 
-    pausa();
-    limpiarPantalla();
+    //pausa();
+
+    //limpiarPantalla();
+    
 }
 
 void Menu::actualizarCliente() {
     limpiarPantalla();
-    int id = capturarId("Ingrese el ID del cliente que desea actualizar: ");
+    
+    verClientes();
+
+    string dni = capturarDni("Ingrese el DNI del cliente que desea actualizar: ");
 
     Cliente cliente(conexion);
-    cliente.setIdCliente(id);
+    cliente.setdniCliente(dni);
 
     cout << "Confirma la actualizacion del cliente ";
     char confirmacion = capturarConfirmacion();
@@ -208,10 +224,13 @@ void Menu::actualizarCliente() {
 
 void Menu::eliminarCliente() {
     limpiarPantalla();
-    int id = capturarId("Ingrese el ID del cliente que desea eliminar: ");
+
+    verClientes();
+
+    string dni = capturarDni("Ingrese el DNI del cliente que desea eliminar: ");
 
     Cliente cliente(conexion);
-    cliente.setIdCliente(id);
+    cliente.setdniCliente(dni);
 
     cout << "Confirma la eliminacion del cliente ";
     char confirmacion = capturarConfirmacion();
@@ -264,12 +283,14 @@ void Menu::verMecanicos() {
     Mecanico mecanico(conexion);
     mecanico.leerMecanico();
 
-    pausa();
-    limpiarPantalla();
+    
 }
 
 void Menu::actualizarMecanico() {
     limpiarPantalla();
+
+    verMecanicos();
+
     int id = capturarId("Ingrese el ID del mecanico que desea actualizar: ");
 
     Mecanico mecanico(conexion);
@@ -293,10 +314,13 @@ void Menu::actualizarMecanico() {
 
 void Menu::eliminarMecanico() {
     limpiarPantalla();
-    int id = capturarId("Ingrese el ID del mecanico que desea eliminar: ");
+
+    verMecanicos();
+
+    string dni = capturarDni("Ingrese el ID del mecanico que desea eliminar: ");
 
     Mecanico mecanico(conexion);
-    mecanico.setIdMecanico(id);
+    mecanico.setDniMecanico(dni);
 
     cout << "Confirma la eliminacion del mecanico ";
     char confirmacion = capturarConfirmacion();
@@ -316,9 +340,11 @@ void Menu::eliminarMecanico() {
 
 void Menu::crearVehiculo() {
     limpiarPantalla();
-    string marca, modelo;
+    string patente, marca, modelo;
     int anio, idCliente;
 
+    cout << "Ingrese la patente del vehiculo: ";
+    cin >> patente;
     cout << "Ingrese la marca del vehiculo: ";
     cin >> marca;
     cout << "Ingrese el modelo del vehiculo: ";
@@ -331,7 +357,7 @@ void Menu::crearVehiculo() {
     char confirmacion = capturarConfirmacion();
 
     if (confirmacion == 's') {
-        Vehiculo vehiculo(conexion, 0, marca, modelo, anio, idCliente);
+        Vehiculo vehiculo(conexion, 0,patente, marca, modelo, anio, idCliente);
         vehiculo.crearVehiculo();
         cout << "Vehiculo creado exitosamente!" << endl;
     }
@@ -350,22 +376,39 @@ void Menu::verVehiculos() {
     Vehiculo vehiculo(conexion);
     vehiculo.leerVehiculo(); 
 
-    pausa();
-    limpiarPantalla();
+    
 }
 
 void Menu::actualizarVehiculo() {
     limpiarPantalla();
-    int id = capturarId("Ingrese el ID del vehiculo que desea actualizar: ");
 
-    Vehiculo vehiculo(conexion);
-    vehiculo.setIdVehiculo(id);
+    verVehiculos();  // Muestra los vehículos disponibles
 
-    cout << "Confirma la actualizacion del vehiculo ";
+    Vehiculo vehiculo(conexion);  // Crea un objeto Vehiculo
+
+    int id;
+    bool idValido = false;
+
+    // Bucle para seguir solicitando un ID válido
+    while (!idValido) {
+        id = capturarId("Ingrese el ID del vehiculo que desea actualizar: ");
+        vehiculo.setIdVehiculo(id);
+
+        // Verifica si el vehículo existe
+        if (vehiculo.existeVehiculo()) {
+            idValido = true;  // Si existe, rompe el bucle
+        }
+        else {
+            cout << "El ID del vehiculo ingresado no existe. Por favor, intente de nuevo." << endl;
+        }
+    }
+
+    // Confirmar actualización
+    cout << "Confirma la actualizacion del vehiculo. ";
     char confirmacion = capturarConfirmacion();
 
     if (confirmacion == 's') {
-        vehiculo.actualizarVehiculo();
+        vehiculo.actualizarVehiculo();  // Llama al método para actualizar el vehículo
         cout << "Vehiculo actualizado exitosamente!" << endl;
     }
     else {
@@ -379,16 +422,32 @@ void Menu::actualizarVehiculo() {
 
 void Menu::eliminarVehiculo() {
     limpiarPantalla();
-    int id = capturarId("Ingrese el ID del vehiculo que desea eliminar: ");
 
-    Vehiculo vehiculo(conexion);
-    vehiculo.setIdVehiculo(id);
+    verVehiculos();  // Muestra los vehículos disponibles
 
-    cout << "Confirma la eliminacion del vehiculo ";
+    Vehiculo vehiculo(conexion);  // Crea un objeto Vehiculo
+    string patente;
+
+    // Bucle para seguir solicitando una patente válida y existente
+    while (true) {
+        patente = capturarPatente("Ingrese la Patente del vehiculo que desea eliminar: ");
+        vehiculo.setPatente(patente);
+
+        // Verifica si el vehículo con esa patente existe
+        if (vehiculo.existeVehiculo()) {
+            break;  // Si existe, sale del bucle
+        }
+        else {
+            cout << "La patente ingresada no corresponde a ningún vehículo. Por favor, intente de nuevo." << endl;
+        }
+    }
+
+    // Confirmar eliminación
+    cout << "Confirma la eliminacion del vehiculo.  ";
     char confirmacion = capturarConfirmacion();
 
     if (confirmacion == 's') {
-        vehiculo.eliminarVehiculo();
+        vehiculo.eliminarVehiculo();  // Llama al método para eliminar el vehículo
         cout << "Vehiculo eliminado exitosamente!" << endl;
     }
     else {
@@ -398,3 +457,5 @@ void Menu::eliminarVehiculo() {
     pausa();
     limpiarPantalla();
 }
+
+

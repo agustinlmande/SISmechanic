@@ -76,6 +76,68 @@ int capturarId(const string& mensaje) {
     }
 }
 
+string capturarDni(const string& mensaje) {
+    string dni;
+    while (true) {
+        cout << mensaje;
+        getline(cin, dni);
+
+        // Verifica que el DNI no esté vacío
+        if (dni.empty()) {
+            cout << "DNI no valido. Intente nuevamente: ";
+            continue;
+        }
+
+        // Verifica que el DNI solo contenga letras o números
+        bool valido = true;
+        for (char c : dni) {
+            if (!isalnum(c)) {
+                valido = false;
+                break;
+            }
+        }
+
+        if (!valido) {
+            cout << "DNI no valido. Intente nuevamente: ";
+        }
+        else {
+            return dni;
+        }
+    }
+}
+
+string capturarPatente(const string& mensaje) {
+    string patente;
+    while (true) {
+        cout << mensaje;
+        getline(cin, patente);
+
+        // Verifica que la patente no esté vacía
+        if (patente.empty()) {
+            cout << "Patente no valida. Intente nuevamente: ";
+            continue;
+        }
+
+        // Verifica que la patente solo contenga letras o números
+        bool valido = true;
+        for (char c : patente) {
+            if (!isalnum(c)) {
+                valido = false;
+                break;
+            }
+        }
+
+        if (!valido) {
+            cout << "Patente no valida. Intente nuevamente: ";
+        }
+        else {
+            return patente;
+        }
+    }
+}
+
+
+
 void encabezado(const std::string& nombreGestion) {
     cout << setfill('=') << setw(30) << "=" << endl;
     cout << setfill(' ') << setw(4) << " " << "#---------------------#" << endl;

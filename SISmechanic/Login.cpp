@@ -32,7 +32,7 @@ void mostrarPantallaLogin() {
     cout << setfill(' ') << setw(29) << "Sistema de Gestion de Taller" << endl;
     cout << setfill('=') << setw(30) << "=" << endl;
     cout << "Usuario: " << username << endl;
-    cout << "Contraseña: " ;
+    cout << "Contrasena: " ;
     
 
     for (char c : password) {
