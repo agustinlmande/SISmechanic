@@ -61,17 +61,17 @@ void Vehiculo::actualizarVehiculo() {
     cout << "Ingrese el nuevo modelo del vehiculo " << modelo << ": ";
     cin >> modelo;
 
-    cout << "Ingrese el nuevo año del vehiculo " << anio << ": ";
+    cout << "Ingrese el nuevo ano del vehiculo " << anio << ": ";
     cin >> anio;
 
     cout << "Ingrese el nuevo ID del cliente del vehiculo " << idCliente << ": ";
-    cout << "Ingrese la nueva marca del vehículo " << marca << ": ";
+    cout << "Ingrese la nueva marca del vehiculo " << marca << ": ";
     cin >> marca;
 
-    cout << "Ingrese el nuevo modelo del vehículo " << modelo << ": ";
+    cout << "Ingrese el nuevo modelo del vehiculo " << modelo << ": ";
     cin >> modelo;
 
-    cout << "Ingrese el nuevo año del vehículo " << anio << ": ";
+    cout << "Ingrese el nuevo ano del vehículo " << anio << ": ";
     cin >> anio;
 
     cout << "Ingrese el nuevo ID del cliente del vehículo " << idCliente << ": ";
@@ -87,7 +87,7 @@ void Vehiculo::actualizarVehiculo() {
     // Ejecutar la consulta
     conexion->ejecutarConsulta(consulta);
 
-    cout << "Vehículo actualizado exitosamente." << endl;
+    cout << "Vehiculo actualizado exitosamente." << endl;
 }
 
 void Vehiculo::eliminarVehiculo() {
