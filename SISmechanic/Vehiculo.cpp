@@ -1,6 +1,7 @@
 #include "Vehiculo.h"
 #include <iostream>
 #include <mysql.h>
+#include "Utilidades.h"
 
 using namespace std;
 
@@ -55,35 +56,6 @@ void Vehiculo::leerVehiculo() {
     mysql_free_result(resultado);
 }
 
-void Vehiculo::actualizarVehiculo() {
-    // Solicitar los nuevos valores para actualizar el vehículo
-    cout << "Ingrese la nueva patente del vehiculo (" << patente << "): ";
-    cin >> patente;
-
-    cout << "Ingrese la nueva marca del vehiculo (" << marca << "): ";
-    cin >> marca;
-
-    cout << "Ingrese el nuevo modelo del vehiculo (" << modelo << "): ";
-    cin >> modelo;
-
-    cout << "Ingrese el nuevo año del vehiculo (" << anio << "): ";
-    cin >> anio;
-
-    cout << "Ingrese el nuevo ID del cliente del vehiculo (" << idCliente << "): ";
-    cin >> idCliente;
-
-    // Crear la consulta de actualización
-    string consulta = "UPDATE Vehiculo SET patente='" + patente + "', marca='" + marca +
-        "', modelo='" + modelo +
-        "', anio=" + to_string(anio) +
-        ", idCliente=" + to_string(idCliente) +
-        " WHERE idVehiculo=" + to_string(idVehiculo);
-
-    // Ejecutar la consulta
-    conexion->ejecutarConsulta(consulta);
-
-    cout << "Vehiculo actualizado exitosamente." << endl;
-}
 
 void Vehiculo::eliminarVehiculo() {
     string consulta = "DELETE FROM Vehiculo WHERE idVehiculo=" + to_string(idVehiculo);

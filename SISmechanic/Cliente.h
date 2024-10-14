@@ -28,7 +28,7 @@ public:
     void setapellidoCliente(const string& a);
     void settelCliente(const string& t);
     void setemailCliente(const string& em);
-
+   
 
     // Métodos get (mostrar)
     int getIdCliente() const;
@@ -44,4 +44,9 @@ public:
     void leerClientes();
     void actualizarCliente();
     void eliminarCliente();
+
+    // Método para verificar si el cliente existe
+    bool existeCliente();
+
+
 };

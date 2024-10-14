@@ -2,7 +2,6 @@
 #include <iostream>
 #include <limits>
 #include "Utilidades.h"
-#include "Vehiculo.h"
 #include <chrono>
 #include <thread>
 #include <iomanip>
@@ -156,6 +155,11 @@ void Menu::menuVehiculos() {
     } while (opcion != 5);
 }
 
+
+
+////////////////////////////////////////////////////////////////////
+
+
 void Menu::crearCliente() {
     limpiarPantalla();
     string dni, nombre, apellido, tel, email;
@@ -196,30 +200,175 @@ void Menu::verClientes() {
     
 }
 
+//void Menu::actualizarCliente() {
+//    limpiarPantalla();
+
+//    verClientes();
+
+//    string dni = capturarDni("Ingrese el DNI del cliente que desea actualizar: ");
+
+ //   Cliente cliente(conexion);
+ //   cliente.setdniCliente(dni);
+
+ //   cout << "Confirma la actualizacion del cliente ";
+ //   char confirmacion = capturarConfirmacion();
+
+ //   if (confirmacion == 's') {
+ //       cliente.actualizarCliente();
+  //      cout << "Cliente actualizado exitosamente!" << endl;
+ //   }
+  //  else {
+ //       cout << "Operacion cancelada." << endl;
+ //   }
+
+ //   pausa();
+ //   limpiarPantalla();
+//}
+
+
 void Menu::actualizarCliente() {
     limpiarPantalla();
-    
+
+    // Mostrar clientes disponibles
     verClientes();
 
-    string dni = capturarDni("Ingrese el DNI del cliente que desea actualizar: ");
+    // Solicitar DNI y verificar si existe
+    string dni;
+    bool dniValido = false;
 
-    Cliente cliente(conexion);
-    cliente.setdniCliente(dni);
+    while (!dniValido) {
+        dni = capturarDni("Ingrese el DNI del cliente que desea actualizar: ");
+        Cliente cliente(conexion);  // Crea un objeto Cliente
+        cliente.setdniCliente(dni);
 
-    cout << "Confirma la actualizacion del cliente ";
+        if (cliente.existeCliente()) {  // Verifica si el cliente existe
+            dniValido = true;  // Si existe, rompe el bucle
+        }
+        else {
+            cout << "El DNI ingresado no existe. Por favor, intente de nuevo." << endl;
+        }
+    }
+
+    // Confirmar actualización
+    cout << "Confirma la actualizacion del cliente: ";
     char confirmacion = capturarConfirmacion();
 
-    if (confirmacion == 's') {
-        cliente.actualizarCliente();
-        cout << "Cliente actualizado exitosamente!" << endl;
-    }
-    else {
+    if (confirmacion != 's') {
         cout << "Operacion cancelada." << endl;
+        pausa();
+        limpiarPantalla();
+        return;
     }
+
+    // Variables para almacenar los nuevos valores
+    bool actualizarDni = false, actualizarNombre = false, actualizarApellido = false, actualizarTelefono = false, actualizarEmail = false;
+
+    string nuevoDni, nuevoNombre, nuevoApellido, nuevoTelefono, nuevoEmail;
+    bool continuar = true;
+
+    while (continuar) {
+        limpiarPantalla();
+        cout << "Seleccione el campo que desea actualizar: " << endl;
+        cout << "1. DNI" << endl;
+        cout << "2. Nombre" << endl;
+        cout << "3. Apellido" << endl;
+        cout << "4. Telefono" << endl;
+        cout << "5. Email" << endl;
+        cout << "6. Guardar cambios y salir" << endl;
+        cout << "7. Cancelar" << endl;
+
+        int opcion = capturarId("Ingrese el numero de la opcion: ");
+
+        // Validar si la opción está en el rango permitido
+        if (opcion < 1 || opcion > 7) {
+            cout << "Opcion no valida, intente de nuevo." << endl;
+            pausa();  // Pausa para que el usuario pueda leer el mensaje
+            continue;  // Volver al inicio del bucle para solicitar otra opción
+        }
+
+        switch (opcion) {
+        case 1: {
+            nuevoDni = capturarDni("Ingrese el nuevo DNI: ");
+            actualizarDni = true;
+            break;
+        }
+        case 2: {
+            cout << "Ingrese el nuevo nombre: ";
+            cin >> nuevoNombre;
+            actualizarNombre = true;
+            break;
+        }
+        case 3: {
+            cout << "Ingrese el nuevo apellido: ";
+            cin >> nuevoApellido;
+            actualizarApellido = true;
+            break;
+        }
+        case 4: {
+            cout << "Ingrese el nuevo telefono: ";
+            cin >> nuevoTelefono;
+            actualizarTelefono = true;
+            break;
+        }
+        case 5: {
+            cout << "Ingrese el nuevo email: ";
+            cin >> nuevoEmail;
+            actualizarEmail = true;
+            break;
+        }
+        case 6: {
+            continuar = false;  // Salir y guardar cambios
+            break;
+        }
+        case 7: {
+            cout << "Operacion cancelada." << endl;
+            pausa();
+            limpiarPantalla();
+            return;
+        }
+        }
+    }
+
+    // Crear la consulta de actualización solo con los campos seleccionados
+    string consulta = "UPDATE cliente SET ";
+    bool primeraCondicion = true;
+
+    if (actualizarDni) {
+        consulta += "dniCliente='" + nuevoDni + "'";
+        primeraCondicion = false;
+    }
+    if (actualizarNombre) {
+        if (!primeraCondicion) consulta += ", ";
+        consulta += "nombreCliente='" + nuevoNombre + "'";
+        primeraCondicion = false;
+    }
+    if (actualizarApellido) {
+        if (!primeraCondicion) consulta += ", ";
+        consulta += "apellidoCliente='" + nuevoApellido + "'";
+        primeraCondicion = false;
+    }
+    if (actualizarTelefono) {
+        if (!primeraCondicion) consulta += ", ";
+        consulta += "telCliente='" + nuevoTelefono + "'";
+        primeraCondicion = false;
+    }
+    if (actualizarEmail) {
+        if (!primeraCondicion) consulta += ", ";
+        consulta += "emailCliente='" + nuevoEmail + "'";
+    }
+
+    consulta += " WHERE dniCliente='" + dni + "'";
+
+    // Ejecutar la consulta
+    conexion->ejecutarConsulta(consulta);
+
+    cout << "Cliente actualizado exitosamente." << endl;
 
     pausa();
     limpiarPantalla();
 }
+
+
 
 
 void Menu::eliminarCliente() {
@@ -385,35 +534,132 @@ void Menu::actualizarVehiculo() {
     verVehiculos();  // Muestra los vehículos disponibles
 
     Vehiculo vehiculo(conexion);  // Crea un objeto Vehiculo
+    string patente;
+    bool patenteValida = false;
 
-    int id;
-    bool idValido = false;
-
-    // Bucle para seguir solicitando un ID válido
-    while (!idValido) {
-        id = capturarId("Ingrese el ID del vehiculo que desea actualizar: ");
-        vehiculo.setIdVehiculo(id);
+    // Bucle para seguir solicitando una patente válida
+    while (!patenteValida) {
+        patente = capturarPatente("Ingrese la patente del vehiculo que desea actualizar: ");
+        vehiculo.setPatente(patente);
 
         // Verifica si el vehículo existe
         if (vehiculo.existeVehiculo()) {
-            idValido = true;  // Si existe, rompe el bucle
+            patenteValida = true;  // Si existe, rompe el bucle
         }
         else {
-            cout << "El ID del vehiculo ingresado no existe. Por favor, intente de nuevo." << endl;
+            cout << "La patente ingresada no existe. Por favor, intente de nuevo." << endl;
         }
     }
 
     // Confirmar actualización
-    cout << "Confirma la actualizacion del vehiculo. ";
+    cout << "Confirma la actualizacion del vehiculo: ";
     char confirmacion = capturarConfirmacion();
 
-    if (confirmacion == 's') {
-        vehiculo.actualizarVehiculo();  // Llama al método para actualizar el vehículo
-        cout << "Vehiculo actualizado exitosamente!" << endl;
-    }
-    else {
+    if (confirmacion != 's') {
         cout << "Operacion cancelada." << endl;
+        pausa();
+        limpiarPantalla();
+        return;
     }
+
+    // Variables para almacenar los nuevos valores
+    bool actualizarPatente = false, actualizarMarca = false, actualizarModelo = false, actualizarAnio = false, actualizarIdCliente = false;
+
+    string nuevaPatente, nuevaMarca, nuevoModelo;
+    int nuevoAnio, nuevoIdCliente;
+
+    bool continuar = true;
+    while (continuar) {
+        limpiarPantalla();
+        cout << "Seleccione el campo que desea actualizar: " << endl;
+        cout << "1. Patente" << endl;
+        cout << "2. Marca" << endl;
+        cout << "3. Modelo" << endl;
+        cout << "4. Ano" << endl;
+        cout << "5. ID Cliente" << endl;
+        cout << "6. Guardar cambios y salir" << endl;
+        cout << "7. Cancelar" << endl;
+
+        int opcion = capturarId("Ingrese el numero de la opcion: ");
+        switch (opcion) {
+        case 1: {
+            nuevaPatente = capturarPatente("Ingrese la nueva patente: ");
+            actualizarPatente = true;
+            break;
+        }
+        case 2: {
+            cout << "Ingrese la nueva marca: ";
+            cin >> nuevaMarca;
+            actualizarMarca = true;
+            break;
+        }
+        case 3: {
+            cout << "Ingrese el nuevo modelo: ";
+            cin >> nuevoModelo;
+            actualizarModelo = true;
+            break;
+        }
+        case 4: {
+            nuevoAnio = capturarId("Ingrese el nuevo ano: ");
+            actualizarAnio = true;
+            break;
+        }
+        case 5: {
+            nuevoIdCliente = capturarId("Ingrese el nuevo ID del cliente: ");
+            actualizarIdCliente = true;
+            break;
+        }
+        case 6: {
+            continuar = false;  // Salir y guardar cambios
+            break;
+        }
+        case 7: {
+            cout << "Operacion cancelada." << endl;
+            pausa();
+            limpiarPantalla();
+            return;
+        }
+        default:
+            cout << "Opcion no valida, intente de nuevo." << endl;
+            pausa();
+            continue;
+        }
+    }
+
+    // Crear la consulta de actualización solo con los campos seleccionados
+    string consulta = "UPDATE Vehiculo SET ";
+    bool primeraCondicion = true;  // Para controlar si agregamos una coma o no
+
+    if (actualizarPatente) {
+        consulta += "patente='" + nuevaPatente + "'";
+        primeraCondicion = false;
+    }
+    if (actualizarMarca) {
+        if (!primeraCondicion) consulta += ", ";
+        consulta += "marca='" + nuevaMarca + "'";
+        primeraCondicion = false;
+    }
+    if (actualizarModelo) {
+        if (!primeraCondicion) consulta += ", ";
+        consulta += "modelo='" + nuevoModelo + "'";
+        primeraCondicion = false;
+    }
+    if (actualizarAnio) {
+        if (!primeraCondicion) consulta += ", ";
+        consulta += "anio=" + to_string(nuevoAnio);
+        primeraCondicion = false;
+    }
+    if (actualizarIdCliente) {
+        if (!primeraCondicion) consulta += ", ";
+        consulta += "idCliente=" + to_string(nuevoIdCliente);
+    }
+
+    consulta += " WHERE patente='" + patente + "'";
+
+    // Ejecutar la consulta
+    conexion->ejecutarConsulta(consulta);
+
+    cout << "Vehiculo actualizado exitosamente." << endl;
 
     pausa();
     limpiarPantalla();
