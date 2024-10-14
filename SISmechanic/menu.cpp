@@ -200,31 +200,6 @@ void Menu::verClientes() {
     
 }
 
-//void Menu::actualizarCliente() {
-//    limpiarPantalla();
-
-//    verClientes();
-
-//    string dni = capturarDni("Ingrese el DNI del cliente que desea actualizar: ");
-
- //   Cliente cliente(conexion);
- //   cliente.setdniCliente(dni);
-
- //   cout << "Confirma la actualizacion del cliente ";
- //   char confirmacion = capturarConfirmacion();
-
- //   if (confirmacion == 's') {
- //       cliente.actualizarCliente();
-  //      cout << "Cliente actualizado exitosamente!" << endl;
- //   }
-  //  else {
- //       cout << "Operacion cancelada." << endl;
- //   }
-
- //   pausa();
- //   limpiarPantalla();
-//}
-
 
 void Menu::actualizarCliente() {
     limpiarPantalla();
@@ -435,26 +410,156 @@ void Menu::verMecanicos() {
     
 }
 
+//void Menu::actualizarMecanico() {
+//    limpiarPantalla();
+
+//    verMecanicos();
+
+//    int id = capturarId("Ingrese el ID del mecanico que desea actualizar: ");
+
+//    Mecanico mecanico(conexion);
+//    mecanico.setIdMecanico(id);
+
+//    cout << "Confirma la actualizacion del mecanico ";
+//    char confirmacion = capturarConfirmacion();
+
+//    if (confirmacion == 's') {
+//        mecanico.actualizarMecanico();
+//        cout << "Mecanico actualizado exitosamente!" << endl;
+//    }
+//    else {
+//        cout << "Operacion cancelada." << endl;
+//    }
+
+//    pausa();
+//    limpiarPantalla();
+//}
 void Menu::actualizarMecanico() {
     limpiarPantalla();
 
+    // Mostrar mecánicos disponibles
     verMecanicos();
 
-    int id = capturarId("Ingrese el ID del mecanico que desea actualizar: ");
+    // Solicitar ID del mecánico y verificar si existe
+    int id;
+    bool idValido = false;
 
-    Mecanico mecanico(conexion);
-    mecanico.setIdMecanico(id);
+    while (!idValido) {
+        id = capturarId("Ingrese el ID del mecanico que desea actualizar: ");
+        Mecanico mecanico(conexion);  // Crea un objeto Mecanico
+        mecanico.setIdMecanico(id);
 
-    cout << "Confirma la actualizacion del mecanico ";
+        if (mecanico.existeMecanico()) {  // Verifica si el mecánico existe
+            idValido = true;  // Si existe, romper el bucle
+        }
+        else {
+            cout << "El ID ingresado no existe. Por favor, intente de nuevo." << endl;
+        }
+    }
+
+    // Confirmar actualización
+    cout << "Confirma la actualizacion del mecanico: ";
     char confirmacion = capturarConfirmacion();
 
-    if (confirmacion == 's') {
-        mecanico.actualizarMecanico();
-        cout << "Mecanico actualizado exitosamente!" << endl;
-    }
-    else {
+    if (confirmacion != 's') {
         cout << "Operacion cancelada." << endl;
+        pausa();
+        limpiarPantalla();
+        return;
     }
+
+    // Variables para almacenar los nuevos valores
+    bool actualizarId = false, actualizarNombre = false, actualizarApellido = false, actualizarTelefono = false;
+
+    int nuevoId;
+    string nuevoNombre, nuevoApellido, nuevoTelefono;
+    bool continuar = true;
+
+    while (continuar) {
+        limpiarPantalla();
+        cout << "Seleccione el campo que desea actualizar: " << endl;
+        cout << "1. ID" << endl;
+        cout << "2. Nombre" << endl;
+        cout << "3. Apellido" << endl;
+        cout << "4. Telefono" << endl;
+        cout << "5. Guardar cambios y salir" << endl;
+        cout << "6. Cancelar" << endl;
+
+        int opcion = capturarId("Ingrese el numero de la opcion: ");
+
+        // Validar si la opción está en el rango permitido
+        if (opcion < 1 || opcion > 6) {
+            cout << "Opcion no valida, intente de nuevo." << endl;
+            pausa();  // Pausa para que el usuario pueda leer el mensaje
+            continue;  // Volver al inicio del bucle para solicitar otra opción
+        }
+
+        switch (opcion) {
+        case 1: {
+            nuevoId = capturarId("Ingrese el nuevo ID: ");
+            actualizarId = true;
+            break;
+        }
+        case 2: {
+            cout << "Ingrese el nuevo nombre: ";
+            cin >> nuevoNombre;
+            actualizarNombre = true;
+            break;
+        }
+        case 3: {
+            cout << "Ingrese el nuevo apellido: ";
+            cin >> nuevoApellido;
+            actualizarApellido = true;
+            break;
+        }
+        case 4: {
+            cout << "Ingrese el nuevo telefono: ";
+            cin >> nuevoTelefono;
+            actualizarTelefono = true;
+            break;
+        }
+        case 5: {
+            continuar = false;  // Salir y guardar cambios
+            break;
+        }
+        case 6: {
+            cout << "Operacion cancelada." << endl;
+            pausa();
+            limpiarPantalla();
+            return;
+        }
+        }
+    }
+
+    // Crear la consulta de actualización solo con los campos seleccionados
+    string consulta = "UPDATE mecanico SET ";
+    bool primeraCondicion = true;  // Para controlar si agregamos una coma o no
+
+    if (actualizarId) {
+        consulta += "idMecanico=" + to_string(nuevoId);
+        primeraCondicion = false;
+    }
+    if (actualizarNombre) {
+        if (!primeraCondicion) consulta += ", ";
+        consulta += "nombreMecanico='" + nuevoNombre + "'";
+        primeraCondicion = false;
+    }
+    if (actualizarApellido) {
+        if (!primeraCondicion) consulta += ", ";
+        consulta += "apellidoMecanico='" + nuevoApellido + "'";
+        primeraCondicion = false;
+    }
+    if (actualizarTelefono) {
+        if (!primeraCondicion) consulta += ", ";
+        consulta += "telMecanico='" + nuevoTelefono + "'";
+    }
+
+    consulta += " WHERE idMecanico=" + to_string(id);
+
+    // Ejecutar la consulta
+    conexion->ejecutarConsulta(consulta);
+
+    cout << "Mecanico actualizado exitosamente." << endl;
 
     pausa();
     limpiarPantalla();
@@ -498,7 +603,7 @@ void Menu::crearVehiculo() {
     cin >> marca;
     cout << "Ingrese el modelo del vehiculo: ";
     cin >> modelo;
-    cout << "Ingrese año del vehiculo: ";
+    cout << "Ingrese ano del vehiculo: ";
     cin >> anio;
     idCliente = capturarId("Ingrese el ID del cliente asociado: ");
 
@@ -684,7 +789,7 @@ void Menu::eliminarVehiculo() {
             break;  // Si existe, sale del bucle
         }
         else {
-            cout << "La patente ingresada no corresponde a ningún vehículo. Por favor, intente de nuevo." << endl;
+            cout << "La patente ingresada no corresponde a ningun vehiculo. Por favor, intente de nuevo." << endl;
         }
     }
 

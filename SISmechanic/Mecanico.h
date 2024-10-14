@@ -45,6 +45,9 @@ public:
     void leerMecanico();
     void actualizarMecanico();
     void eliminarMecanico();
+
+
+    bool existeMecanico();
 };
 
 

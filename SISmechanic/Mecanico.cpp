@@ -94,3 +94,32 @@ void Mecanico::eliminarMecanico() {
     string consulta = "DELETE FROM cliente WHERE id_Cliente=" + to_string(idMecanico);
     conexion->ejecutarConsulta(consulta);
 }
+
+// Método para verificar si el mecánico existe en la base de datos
+bool Mecanico::existeMecanico() {
+    // Crear la consulta SQL para verificar si el mecánico existe
+    string consulta = "SELECT COUNT(*) FROM Mecanico WHERE idMecanico = " + to_string(idMecanico);
+
+    // Ejecutar la consulta
+    if (mysql_query(conexion->getConector(), consulta.c_str())) {
+        cerr << "Error al verificar el mecánico: " << mysql_error(conexion->getConector()) << endl;
+        return false;
+    }
+
+    // Obtener el resultado de la consulta
+    MYSQL_RES* res = mysql_store_result(conexion->getConector());
+    if (res == nullptr) {
+        cerr << "Error al obtener el resultado: " << mysql_error(conexion->getConector()) << endl;
+        return false;
+    }
+
+    // Leer la fila de resultados
+    MYSQL_ROW row = mysql_fetch_row(res);
+    int count = atoi(row[0]);
+
+    // Liberar la memoria del resultado
+    mysql_free_result(res);
+
+    // Devuelve true si el mecánico existe (es decir, el COUNT(*) > 0)
+    return count > 0;
+}
