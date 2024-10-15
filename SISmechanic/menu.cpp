@@ -441,19 +441,19 @@ void Menu::actualizarMecanico() {
     verMecanicos();
 
     // Solicitar ID del mecánico y verificar si existe
-    int id;
-    bool idValido = false;
+    string dni;
+    bool dniValido = false;
 
-    while (!idValido) {
-        id = capturarId("Ingrese el ID del mecanico que desea actualizar: ");
+    while (!dniValido) {
+        dni = capturarDni("Ingrese el DNI del mecanico que desea actualizar: ");
         Mecanico mecanico(conexion);  // Crea un objeto Mecanico
-        mecanico.setIdMecanico(id);
+        mecanico.setDniMecanico(dni);
 
         if (mecanico.existeMecanico()) {  // Verifica si el mecánico existe
-            idValido = true;  // Si existe, romper el bucle
+            dniValido = true;  // Si existe, romper el bucle
         }
         else {
-            cout << "El ID ingresado no existe. Por favor, intente de nuevo." << endl;
+            cout << "El DNI ingresado no existe. Por favor, intente de nuevo." << endl;
         }
     }
 
@@ -554,7 +554,7 @@ void Menu::actualizarMecanico() {
         consulta += "telMecanico='" + nuevoTelefono + "'";
     }
 
-    consulta += " WHERE idMecanico=" + to_string(id);
+    consulta += " WHERE DniMecanico=" + dni;
 
     // Ejecutar la consulta
     conexion->ejecutarConsulta(consulta);
