@@ -98,7 +98,7 @@ void Mecanico::eliminarMecanico() {
 // Método para verificar si el mecánico existe en la base de datos
 bool Mecanico::existeMecanico() {
     // Crear la consulta SQL para verificar si el mecánico existe
-    string consulta = "SELECT COUNT(*) FROM Mecanico WHERE idMecanico = " + to_string(idMecanico);
+    string consulta = "SELECT COUNT(*) FROM Mecanico WHERE DniMecanico = " + DniMecanico;
 
     // Ejecutar la consulta
     if (mysql_query(conexion->getConector(), consulta.c_str())) {

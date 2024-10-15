@@ -4,6 +4,7 @@
 #include <limits>
 #include <cstdlib> // Para system("CLS")
 #include <string>
+#include <cctype>
 
 using namespace std;
 
@@ -17,26 +18,29 @@ void pausa() {
     cin.get();
 }
 
+
+
 int capturarOpcion(int min, int max) {
-    int opcion;
+    string entrada;
 
     while (true) {
         cout << "Selecciona una opcion (" << min << " - " << max << "): ";
-        cin >> opcion;
+        getline(cin, entrada);  // Lee la entrada completa como cadena
 
-        // Verifica si la entrada es un número válido y dentro del rango
-        if (cin.fail()) {
-            cin.clear(); // Limpia el estado de error
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora hasta el final de la línea
-            cout << "Opcion invalida. Intenta nuevamente." << endl;
-        }
-        else if (opcion < min || opcion > max) {
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora el resto de la línea
-            cout << "Opcion fuera de rango. Intenta nuevamente." << endl;
+        // Verifica si la entrada tiene un solo carácter y es un dígito
+        if (entrada.length() == 1 && isdigit(entrada[0])) {
+            int opcion = entrada[0] - '0';  // Convierte el carácter a entero
+
+            // Verifica si la opción está dentro del rango permitido
+            if (opcion >= min && opcion <= max) {
+                return opcion;  // Retorna la opción válida
+            }
+            else {
+                cout << "Opcion fuera de rango. Intenta nuevamente." << endl;
+            }
         }
         else {
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora el resto de la línea
-            return opcion; // Retorna la opción válida
+            cout << "Entrada no valida. Debes ingresar un numero entre " << min << " y " << max << "." << endl;
         }
     }
 }
