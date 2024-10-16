@@ -4,11 +4,11 @@ SISmechanic
 Versión 1.0
 
 Índice:
-Introducción
-Requisitos del sistema
-Instalación
-Pantalla principal y navegación
-Gestión de Clientes
+1. Introducción
+2. Requisitos del sistema
+3. Instalación
+4. Pantalla principal y navegación
+5. Gestión de Clientes
 5.1 Crear Cliente
 5.2 Ver Clientes
 5.3 Actualizar Cliente
@@ -29,7 +29,7 @@ Soporte técnico
 1. Introducción
 Bienvenido a SISmechanic, un sistema de gestión de talleres mecánicos diseñado para gestionar clientes, mecánicos y otros aspectos clave de un taller mecánico. Este manual te guiará en el uso de cada una de las funcionalidades del sistema, desde la creación de registros hasta la actualización y eliminación de datos.
 
-3. Requisitos del sistema
+2. Requisitos del sistema
 Para poder ejecutar SISmechanic, el sistema requiere cumplir con los siguientes requisitos mínimos:
 Sistema operativo: Windows 7 o superior
 Procesador: Intel Atom 455 o superior
@@ -37,12 +37,12 @@ Memoria RAM: 2 GB
 Espacio en disco: 100 MB disponibles
 Software necesario: MySQL, Visual Studio 2022
 
-4. Instalación
+3. Instalación
 Descarga el instalador de SISmechanic desde el sitio oficial o desde el medio provisto.
 Ejecuta el archivo instalador y sigue las instrucciones en pantalla.
 Una vez instalado, abre SISmechanic desde el acceso directo creado en el escritorio o en el menú de inicio.
 
-5. Pantalla principal y navegación
+4. Pantalla principal y navegación
 Al iniciar la aplicación, verás la pantalla principal con el siguiente menú:
 
 Este menú te permitirá navegar entre las diferentes opciones del sistema. Para seleccionar una opción, ingresa el número correspondiente y presiona Enter.
